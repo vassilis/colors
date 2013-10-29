@@ -35,8 +35,6 @@ h2 {
 }
 
 .color {
-	border-right: 2px #FFF solid;
-	border-left: 2px #FFF solid;
 	width: 20%;
 	height: 20%;
 	/*float: left;*/
