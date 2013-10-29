@@ -1,26 +1,7 @@
 
-<div class="tools">
-	<button><i class="icon-search"></i></button>
-	<button light><i class="icon-light-bulb"></i></button>
-	<button><i class="icon-info"></i></button>
-	<button><i class="icon-twitter"></i></button>
-</div>
-
-<div class="buttons">
-	<button btn ng-disabled="active == 0" ng-click="active=active-1">
-		<i class="icon-arrow-left"></i>
-	</button>
-	<button btn ng-disabled="active == palettes.length - 1" ng-click="active=active+1">
-		<i class="icon-arrow-right"></i>
-	</button>
-</div>
-
-<div ng-repeat="palette in palettes" class="palette" ng-class="{'active': $index == active}">
-	<h1><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
-	<div color class="color" ng-repeat="color in palette.colors" style="background:#{{color}};height:{{100/palette.colors.length}}%;">
-		<span>#{{color}}</span>
-	</div>
-	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="31%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-		<path d="m100 0 l-20 0 c20 0 20 100 0 100 l20 100  z"></path>
-	</svg>
+<div class="bookmarks">
+	<a href="/#/palettes/top" class="big-fat-btn">Top Palettes</a>
+	<a href="/#/palettes/new" class="big-fat-btn">New Palettes</a>
+	<a href="/#/palettes" class="big-fat-btn">All Palettes</a>
+	<a href="/#/palettes/search" class="big-fat-btn">Advanced Search</a>
 </div>

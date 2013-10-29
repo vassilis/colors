@@ -1,8 +1,13 @@
 
 
+.container {
+	min-height: 500px;
+	min-width: 1000px;
+}
+
 body {
 	background: #111;
-	font-family: sans-serif;
+	font-family: 'Share Tech', sans-serif;
 	color: #111;
 	margin: 0;
 	overflow: hidden;
@@ -47,7 +52,6 @@ h1 {
 
 h1 small {
 	color: #FFF;
-	font-family: 'Share Tech', sans-serif;
 }
 
 .light h1 small{
@@ -99,45 +103,49 @@ svg path {
 	text-align: center;
 }
 
-button {
+.btn {
 	border: 0;
-	padding: 5px 24px;
-	line-height: 0;
+	padding: 5px 22px;
+	margin: 0;
+	line-height: 1;
 	outline: 0;
 	background: none;
 	color: #AAA;
 	background-color: #222;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
 	color: #FFF;
 }
 
-button:active {
+.btn:active {
 	color: #000;
 }
 
-button[disabled] {
+.btn[disabled] {
 	color: #444;
 }
 
-.light button {
+.light .btn {
 	background-color: #EEE;
 	color: #999;
 }
-.light button:hover {
+.light .btn:hover {
 	color: #666;
 }
-.light button:active {
+.light .btn:active {
 	color: #CCC;
 }
-.light button[disabled] {
+.light .btn[disabled] {
 	color: #CCC;
 }
 
-button i {
+.btn i {
 	font-size: 40px;
-	line-height: 0;
+	line-height: 1;
 }
 
 .tools {
@@ -148,13 +156,12 @@ button i {
 	text-align: center;
 }
 
-.tools button {
+.tools .btn {
 	padding: 10px;
 }
 
 .tools i {
 	font-size: 20px;
-	color: #888;
 }
 
 ::selection{
@@ -171,4 +178,30 @@ button i {
 }
 .light ::-moz-selection {
 	color: #000;
+}
+
+.big-fat-btn {
+	display: block;
+	padding: 10px;
+	text-align: center;
+	color: #CF0C54;
+	font-size: 5em;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: left;
+	background-color: #010000;
+	transition: font-size .2s;
+}
+
+.big-fat-btn:hover {
+	color: #F2075D;
+	font-size: 8em;
+}
+
+.bookmarks {
+	padding: 20px;
+}
+
+.bookmarks > * {
+	margin: 1px 0;
 }
