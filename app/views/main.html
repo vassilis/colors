@@ -1,0 +1,18 @@
+
+
+<div class="buttons">
+	<button btn ng-disabled="active == 0" ng-click="active=active-1">
+		&larr;
+	</button>
+	<button btn ng-disabled="active == palettes.length - 1" ng-click="active=active+1">
+		&rarr;
+	</button>
+</div>
+
+<div ng-repeat="palette in palettes" class="palette" ng-class="{'active': $index == active}">
+	<a class="title" href="{{palette.url}}" target="blank">{{palette.title}} by {{palette.userName}}</a>
+	<div color class="color" ng-repeat="color in palette.colors" style="background:#{{color}};">
+		<span>#{{color}}</span>
+		<div></div>
+	</div>
+</div>
