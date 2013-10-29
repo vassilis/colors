@@ -44,9 +44,12 @@ h1 small {
 
 .color {
 	width: 30%;
-	/*height: 20%;*/
-	/*float: left;*/
 	position: relative;
+	transition: width .2s;
+}
+
+.color.active {
+	width: 33%;
 }
 
 .color span {

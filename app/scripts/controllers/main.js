@@ -21,6 +21,8 @@ angular.module('colourloversClientApp')
 				var $el = $(element);
 				$el.on('click', function(){
 					selectText(this.getElementsByTagName("span")[0]);
+					$('.color').not(this).removeClass('active');
+					$(this).toggleClass('active');
 				})
 			}
 		}
