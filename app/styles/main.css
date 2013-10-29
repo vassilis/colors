@@ -53,15 +53,26 @@ h1 small {
 	position: absolute;
 	font-weight: bold;
 	right: -120px;
-	top: 15px;
+	top: 0;
 	background-color: #333;
 	display: inline-block;
 	padding: 10px;
 	z-index: 1;
-	border-radius: 3px;
+	/*border-radius: 3px;*/
 	font-size: 1.5em;
 	cursor: default;
 	font-family: monospace;
+}
+
+svg {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+svg path {
+	fill: #111;
 }
 
 .buttons {
