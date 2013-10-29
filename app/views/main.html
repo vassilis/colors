@@ -11,7 +11,7 @@
 
 <div ng-repeat="palette in palettes" class="palette" ng-class="{'active': $index == active}">
 	<h1><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
-	<div color class="color" ng-repeat="color in palette.colors" style="background:#{{color}};">
+	<div color class="color" ng-repeat="color in palette.colors" style="background:#{{color}};height:{{100/palette.colors.length}}%;">
 		<span>#{{color}}</span>
 	</div>
 	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="31%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
