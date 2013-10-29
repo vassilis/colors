@@ -48,12 +48,17 @@ App.Controllers.PalettesNewCtrl = function ($scope, $http) {
 App.directive('color', function(){
 	return {
 		link: function(scope, el, attrs) {
-			var $el = $(el);
+			var $el = $(el),
+				$colors = $('.color');
 			$el.on('click', function(){
 				selectText(this.getElementsByTagName("span")[0]);
-				$('.color').not(this).removeClass('active');
+				$colors.not(this).removeClass('active');
 				$(this).toggleClass('active');
+				event.stopPropagation();
 			})
+			$('html').click(function() {
+				$colors.removeClass('active');
+			});
 		}
 	}
 })
