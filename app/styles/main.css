@@ -24,7 +24,7 @@ h1 {
 	margin: 0;
 	position: absolute;
 	top: 200px;
-	right: 200px;
+	right: 150px;
 	text-align: right;
 	font-weight: normal;
 }
@@ -50,18 +50,20 @@ h1 small {
 }
 
 .color span {
+	-webkit-transform: rotate(-90deg);
 	position: absolute;
-	font-weight: bold;
-	right: -120px;
-	top: 0;
-	background-color: #333;
-	display: inline-block;
-	padding: 10px;
+	/*font-weight: bold;*/
+	right: -45px;
+	top: 50px;
+	/*background-color: #111;*/
+	/*display: inline-block;*/
+	/*padding: 0;*/
 	z-index: 1;
 	/*border-radius: 3px;*/
-	font-size: 1.5em;
+	font-size: 1.1em;
 	cursor: default;
 	font-family: monospace;
+	color: #333;
 }
 
 svg {
@@ -77,7 +79,7 @@ svg path {
 
 .buttons {
 	position: absolute;
-	top: 30px;
+	bottom: 30px;
 	right: 30px;
 	z-index: 10;
 }
@@ -85,8 +87,11 @@ svg path {
 button {
 	font-size: 2em;
 	border: 0;
-	border-radius: 3px;
-	padding: 0 10px;
+	border-radius: 50%;
+	padding: 0 10px 6px;
+	line-height: 1;
+	outline: 0;
+	background: #333;
 }
 
 ::selection{
