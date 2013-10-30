@@ -1,10 +1,6 @@
 'use strict';
 
-window.App = angular.module('colourloversClientApp', [
-	'ngCookies',
-	'ngResource',
-	'ngSanitize'
-])
+window.App = angular.module('colourloversClientApp', [])
 
 App.config(function ($routeProvider) {
 	$routeProvider
