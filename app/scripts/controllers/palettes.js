@@ -50,15 +50,20 @@ App.directive('color', function(){
 		link: function(scope, el, attrs) {
 			var $el = $(el),
 				$colors = $('.color');
-			$el.on('click', function(){
-				selectText(this.getElementsByTagName("span")[0]);
-				$colors.not(this).removeClass('active');
-				$(this).toggleClass('active');
+			$el.on('click', function(event){
+				$el.toggleClass('active');
+				$el.siblings().removeClass('active');
+				selectText(document.getElementsByTagName("h1")[0]); // deselect color text on doubleclick
+				setTimeout(function(){
+					if ($el.hasClass('active')) {
+						selectText(event.target.getElementsByTagName("span")[0]);
+					}
+				}, 10);
 				event.stopPropagation();
 			})
-			$('html').click(function() {
-				$colors.removeClass('active');
-			});
+			// $('html').click(function() {
+			// 	$('.color.active').removeClass('active');
+			// });
 		}
 	}
 })
@@ -79,14 +84,14 @@ function selectText(el) {
 		var doc = document;
 
 		if (doc.body.createTextRange) { // ms
-				var range = doc.body.createTextRange();
-				range.moveToElementText(el);
-				range.select();
+			var range = doc.body.createTextRange();
+			range.moveToElementText(el);
+			range.select();
 		} else if (window.getSelection) { // moz, opera, webkit
-				var selection = window.getSelection();
-				var range = doc.createRange();
-				range.selectNodeContents(el);
-				selection.removeAllRanges();
-				selection.addRange(range);
+			var selection = window.getSelection();
+			var range = doc.createRange();
+			range.selectNodeContents(el);
+			selection.removeAllRanges();
+			selection.addRange(range);
 		}
 }
