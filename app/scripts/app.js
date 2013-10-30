@@ -12,6 +12,10 @@ App.config(function ($routeProvider) {
 			templateUrl: 'views/main.html',
 			controller: 'App.Controllers.MainCtrl'
 		})
+		.when('/search', {
+			templateUrl: 'views/search.html',
+			controller: 'App.Controllers.SearchCtrl'
+		})
 		.when('/palettes/top', {
 			templateUrl: 'views/palettes.html',
 			controller: 'App.Controllers.PalettesTopCtrl'

@@ -1,8 +1,7 @@
 
 
 .container {
-	min-height: 500px;
-	min-width: 1000px;
+	background-color: #000;
 }
 
 body {
@@ -10,7 +9,7 @@ body {
 	font-family: 'Share Tech', sans-serif;
 	color: #111;
 	margin: 0;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 body.light {
@@ -36,6 +35,21 @@ h1 {
 	right: 150px;
 	text-align: right;
 	font-weight: normal;
+}
+
+h2 {
+	color: #FFF;
+}
+
+hr {
+	border-width: 1px;
+	border-color: #666;
+	border-style: solid;
+}
+
+a:hover {
+	color: #FFF;
+	text-decoration: none;
 }
 
 .title {
@@ -103,7 +117,7 @@ svg path {
 	text-align: center;
 }
 
-.btn {
+.btn-icon {
 	border: 0;
 	padding: 5px 22px;
 	margin: 0;
@@ -117,33 +131,34 @@ svg path {
 	cursor: pointer;
 }
 
-.btn:hover {
+.btn-icon:hover {
 	color: #FFF;
+	text-decoration: none;
 }
 
-.btn:active {
+.btn-icon:active {
 	color: #000;
 }
 
-.btn[disabled] {
+.btn-icon[disabled] {
 	color: #444;
 }
 
-.light .btn {
+.light .btn-icon {
 	background-color: #EEE;
 	color: #999;
 }
-.light .btn:hover {
+.light .btn-icon:hover {
 	color: #666;
 }
-.light .btn:active {
+.light .btn-icon:active {
 	color: #CCC;
 }
-.light .btn[disabled] {
+.light .btn-icon[disabled] {
 	color: #CCC;
 }
 
-.btn i {
+.btn-icon i {
 	font-size: 40px;
 	line-height: 1;
 }
@@ -156,7 +171,7 @@ svg path {
 	text-align: center;
 }
 
-.tools .btn {
+.tools .btn-icon {
 	padding: 10px;
 }
 
@@ -164,7 +179,7 @@ svg path {
 	font-size: 20px;
 }
 
-::selection{
+/*::selection{
 	background-color: transparent;
 	color: #FFF;
 }
@@ -178,7 +193,7 @@ svg path {
 }
 .light ::-moz-selection {
 	color: #000;
-}
+}*/
 
 .big-fat-btn {
 	display: block;
@@ -196,6 +211,7 @@ svg path {
 .big-fat-btn:hover {
 	color: #F2075D;
 	font-size: 8em;
+	text-decoration: none;
 }
 
 .bookmarks {
@@ -204,4 +220,57 @@ svg path {
 
 .bookmarks > * {
 	margin: 1px 0;
+}
+
+label {
+	color: #FFF;
+}
+
+input[type="text"]{
+	padding: 0;
+	font-size: 2em;
+	border: 0;
+	width: 100%;
+}
+
+.form-help {
+	color: #FFF;
+}
+
+.q-palette {
+	margin: 0 0 100px 0;
+}
+
+.q-colors {
+}
+
+.q-color {
+	height: 200px;
+	float: left;
+	position: relative;
+}
+
+.q-color span {
+	position: absolute;
+	right: 0;
+	bottom: -30px;
+	color: #FFF;
+	width: 100%;
+	text-align: center;
+	visibility: hidden;
+}
+
+.q-color.active span {
+	visibility: visible;
+}
+
+.q-result-title {
+	color: #FFF;
+	font-size: 1.5em;
+	padding: 0 0 5px;
+}
+
+.btn, .form-control {
+	border: 0;
+	border-radius: 0;
 }
