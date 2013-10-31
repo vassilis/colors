@@ -66,7 +66,7 @@
 		</div>
 		<div class="q-colors clearfix">
 			<div qcolor class="q-color" ng-repeat="color in palette.colors" style="background:#{{color}};width:{{100 * palette.colorWidths[$index]}}%;">
-				<span>#{{color}}</span>
+				<span qclip class="clip" data-clipboard-text="#{{color}}">#{{color}}</span>
 			</div>
 		</div>
 	</div>

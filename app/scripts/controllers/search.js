@@ -75,3 +75,11 @@ App.directive('qcolor', function(){
 		}
 	}
 })
+
+App.directive('qclip', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var clip = new ZeroClipboard(el);
+		}
+	}
+})

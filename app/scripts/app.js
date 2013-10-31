@@ -39,3 +39,7 @@ App.Controllers = {}
 
 // App data namespace
 App.Data = {}
+
+ZeroClipboard.setDefaults({
+	moviePath: '/ZeroClipboard.swf'
+});

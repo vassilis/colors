@@ -252,16 +252,16 @@ input[type="text"]{
 
 .q-color span {
 	position: absolute;
-	right: 0;
+	left: 10%;
 	bottom: -30px;
 	color: #FFF;
-	width: 100%;
+	width: 80%;
 	text-align: center;
-	visibility: hidden;
+	/*visibility: hidden;*/
 }
 
 .q-color.active span {
-	visibility: visible;
+	/*visibility: visible;*/
 }
 
 .q-result-title {
@@ -273,4 +273,16 @@ input[type="text"]{
 .btn, .form-control {
 	border: 0;
 	border-radius: 0;
+}
+
+.clip {
+	transition: opacity .1s, color .2s;
+}
+
+.zeroclipboard-is-hover {
+	color: #12C21A !important;
+	opacity: 1;
+}
+.zeroclipboard-is-active {
+	opacity: 0;
 }
