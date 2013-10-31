@@ -299,3 +299,9 @@ input[type="text"]{
 .zeroclipboard-is-active {
 	opacity: 0;
 }
+
+.search {
+	background-color: #000;
+	padding: 10px;
+	margin: 20px 0;
+}
