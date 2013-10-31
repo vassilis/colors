@@ -20,6 +20,10 @@ App.config(function ($routeProvider) {
 			templateUrl: 'views/palettes.html',
 			controller: 'App.Controllers.PalettesNewCtrl'
 		})
+		.when('/palettes/:palette_id', {
+			templateUrl: 'views/palette.html',
+			controller: 'App.Controllers.PaletteCtrl'
+		})
 		.when('/palettes', {
 			templateUrl: 'views/palettes.html',
 			controller: 'App.Controllers.PalettesCtrl'

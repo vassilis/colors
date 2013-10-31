@@ -16,6 +16,14 @@ body.light {
 	background-color: #FFF;
 }
 
+header {
+	background-color: #000;
+	color: #C7F464;
+	font-size: 10em;
+	text-align: center;
+	padding: 100px 0;
+}
+
 .palette {
 	position: absolute;
 	width: 100%;
@@ -24,7 +32,7 @@ body.light {
 	left: 0;
 }
 
-.active {
+.palette.active {
 	top: 0;
 }
 
@@ -199,27 +207,28 @@ svg path {
 	display: block;
 	padding: 10px;
 	text-align: center;
-	color: #CF0C54;
-	font-size: 5em;
+	color: #4ECDC4;
+	font-size: 3em;
 	cursor: pointer;
 	text-decoration: none;
 	text-align: left;
-	background-color: #010000;
-	transition: font-size .2s;
+	background-color: #000;
+	/*transition: font-size .2s;*/
 }
 
 .big-fat-btn:hover {
-	color: #F2075D;
-	font-size: 8em;
+	color: #C7F464;
+	/*font-size: 8em;*/
 	text-decoration: none;
 }
 
 .bookmarks {
-	padding: 20px;
+	/*padding: 20px;*/
 }
 
 .bookmarks > * {
 	margin: 1px 0;
+	padding: 30px;
 }
 
 label {

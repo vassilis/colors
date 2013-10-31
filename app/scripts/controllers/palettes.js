@@ -45,6 +45,19 @@ App.Controllers.PalettesNewCtrl = function ($scope, $http) {
 
 }
 
+App.Controllers.PaletteCtrl = function ($scope, $http, $routeParams) {
+
+	$http.jsonp('http://www.colourlovers.com/api/palette/' + $routeParams.palette_id + '&jsonCallback=JSON_CALLBACK')
+	.success(function(data, status, headers, config){
+		console.log(data[0]);
+		$scope.palette = data[0];
+	})
+	.error(function(data, status, headers, config){
+		$scope.errors = "Something went wrong";
+	})
+
+}
+
 App.directive('color', function(){
 	return {
 		link: function(scope, el, attrs) {

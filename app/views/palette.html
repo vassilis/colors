@@ -1,15 +1,6 @@
 
 
-<div class="buttons">
-	<button class="btn-icon" btn ng-disabled="active == 0" ng-click="active=active-1">
-		<i class="icon-arrow-left"></i>
-	</button>
-	<button class="btn-icon" btn ng-disabled="active == palettes.length - 1" ng-click="active=active+1">
-		<i class="icon-arrow-right"></i>
-	</button>
-</div>
-
-<div ng-repeat="palette in palettes" class="palette" ng-class="{'active': $index == active}">
+<div class="palette active">
 	
 	<h1><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
 	
@@ -24,7 +15,6 @@
 	<div class="tools">
 		<a class="btn-icon" href="/#/"><i class="icon-search"></i></a>
 		<button class="btn-icon" light><i class="icon-light-bulb"></i></button>
-		<a class="btn-icon" href="/#/palettes/{{palette.id}}"><i class="icon-info"></i></a>
 		<button class="btn-icon"><i class="icon-twitter"></i></button>
 	</div>
 
