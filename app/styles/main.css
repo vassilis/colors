@@ -1,7 +1,7 @@
 
 
 .container {
-	background-color: #000;
+	/*background-color: #000;*/
 }
 
 body {
@@ -86,11 +86,11 @@ h1 small {
 	-webkit-transform: rotate(-90deg);
 	position: absolute;
 	right: -45px;
-	top: 50px;
+	top: 44%;
 	z-index: 1;
 	font-size: 1.1em;
 	cursor: default;
-	font-family: monospace;
+	/*font-family: monospace;*/
 	color: #333;
 }
 
@@ -254,14 +254,13 @@ input[type="text"]{
 	position: absolute;
 	left: 10%;
 	bottom: -30px;
-	color: #FFF;
+	color: #333;
 	width: 80%;
 	text-align: center;
-	/*visibility: hidden;*/
 }
 
-.q-color.active span {
-	/*visibility: visible;*/
+.light .q-color span {
+	color: #DDD;
 }
 
 .q-result-title {
@@ -280,9 +279,14 @@ input[type="text"]{
 }
 
 .zeroclipboard-is-hover {
-	color: #12C21A !important;
+	color: #FFF !important;
 	opacity: 1;
 }
+
+.light .zeroclipboard-is-hover {
+	color: #000 !important;
+}
+
 .zeroclipboard-is-active {
 	opacity: 0;
 }

@@ -43,3 +43,11 @@ App.Data = {}
 ZeroClipboard.setDefaults({
 	moviePath: '/ZeroClipboard.swf'
 });
+
+App.directive('qclip', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var clip = new ZeroClipboard(el);
+		}
+	}
+})
