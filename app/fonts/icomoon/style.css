@@ -62,9 +62,18 @@
 .icon-heart2:before {
 	content: "\e60c";
 }
-.icon-erase:before {
-	content: "\e60d";
-}
 .icon-list:before {
 	content: "\e60e";
+}
+.icon-droplet:before {
+	content: "\e60f";
+}
+.icon-checkmark:before {
+	content: "\e60d";
+}
+.icon-cross:before {
+	content: "\e610";
+}
+.icon-cross2:before {
+	content: "\e611";
 }
