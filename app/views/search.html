@@ -3,6 +3,14 @@
 <div class="search" search data-function="search">
 	<div class="row">
 
+		<div class="col-md-4 color-preview" id="color-preview">
+			<div pcolor></div>
+			<div pcolor></div>
+			<div pcolor></div>
+			<div pcolor></div>
+			<div pcolor></div>
+		</div>
+
 		<!--
 		<div class="col-md-2 col-md-offset-2">
 			<div class="form-group q-lover">
@@ -17,10 +25,10 @@
 			</div>
 		</div>
 		-->
-		<div class="col-md-4 col-md-offset-2">
+		<div class="col-md-4">
 			<div class="q-hex text-center">
 				<!-- <label>hex</label><br> -->
-				<input type="text" id="q-hex" class="form-control" tabindex="1" placeholder="FFCACA, 333333">
+				<input type="text" id="q-hex" class="form-control" tabindex="1" placeholder="FFCACA, 333333" qhex>
 			</div>
 		</div>
 		<!--
@@ -67,14 +75,18 @@
 	</div>
 </div>
 
+<div id="color-picker-wrap" class="color-picker-wrap">
+	<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
+</div>
+
 <div ng-show="results.length">
 	<!-- <div class="alert alert-info">http://www.colourlovers.com/api/palettes{{q}}</div> -->
-	<div ng-repeat="palette in results" class="q-palette" ng-show="palette.colors.length">
+	<div ng-repeat="palette in results" class="q-palette" ng-show="palette.colors.length" qpalette>
 		<div class="q-result-title">
 			<a href="/#/palettes/{{palette.id}}" target="_blank">{{palette.title}} <small>by {{palette.userName}}</small></a>
 		</div>
 		<div class="q-colors clearfix">
-			<div qcolor class="q-color" ng-repeat="color in palette.colors" style="background:#{{color}};width:{{100 / palette.colors.length}}%;">
+			<div class="q-color" ng-repeat="color in palette.colors" style="background:#{{color}};width:{{100 / palette.colors.length}}%;">
 				<span qclip class="clip" data-clipboard-text="#{{color}}">#{{color}}</span>
 			</div>
 		</div>

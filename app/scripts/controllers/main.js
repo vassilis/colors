@@ -6,7 +6,7 @@ App.Controllers.MainCtrl = function ($scope, $http) {
 	$scope.offset = 0;
 	$scope.per_page = 100;
 
-	$http.jsonp('http://www.colourlovers.com/api/palettes/new&jsonCallback=JSON_CALLBACK&showPaletteWidths=1&numResults=3')
+	$http.jsonp('http://www.colourlovers.com/api/palettes/new&jsonCallback=JSON_CALLBACK&showPaletteWidths=1&numResults=10')
 	.success(function(data, status, headers, config){
 		$scope.palettes = data;
 	})
@@ -59,16 +59,3 @@ App.Controllers.MainCtrl = function ($scope, $http) {
 
 
 }
-
-App.directive('search', function(){
-	return {
-		link: function(scope, el, attrs) {
-			var $el = $(el);
-			$el.on('keyup', function(event){
-				if (event.which == 13) {
-					scope.$parent.search();
-				}
-			})
-		}
-	}
-})
