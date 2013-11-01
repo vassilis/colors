@@ -2,7 +2,7 @@
 
 <div class="palette active">
 	
-	<h1><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
+	<h1 class="hidden-xs">{{palette.title}} <small>by {{palette.userName}}</small></h1>
 	
 	<div color class="color" ng-repeat="color in palette.colors" style="background:#{{color}};height:{{100/palette.colors.length}}%;">
 		<span qclip class="clip" data-clipboard-text="#{{color}}">#{{color}}</span>
@@ -11,7 +11,7 @@
 	<div class="tools">
 		<!-- <a class="btn-icon" href="/#/"><i class="icon-search"></i></a> -->
 		<!-- <button class="btn-icon" light><i class="icon-light-bulb"></i></button> -->
-		<button class="btn-icon"><i class="icon-twitter"></i></button>
+		<a class="btn-icon" href="{{palette.url}}" target="blank"><i class="icon-paperplane"></i></a>
 	</div>
 
 </div>

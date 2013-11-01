@@ -6,7 +6,7 @@ App.Controllers.MainCtrl = function ($scope, $http) {
 	$scope.offset = 0;
 	$scope.per_page = 100;
 
-	$http.jsonp('http://www.colourlovers.com/api/palettes/new&jsonCallback=JSON_CALLBACK&showPaletteWidths=1&numResults=10')
+	$http.jsonp('http://www.colourlovers.com/api/palettes/new&jsonCallback=JSON_CALLBACK&showPaletteWidths=1&numResults=1')
 	.success(function(data, status, headers, config){
 		$scope.palettes = data;
 	})
@@ -17,10 +17,14 @@ App.Controllers.MainCtrl = function ($scope, $http) {
 
 	$scope.search = function(offset){
 
-		if (typeof offset == 'undefined') {
-			var offset = 0;
-			$scope.results = [];
-		}
+		var $picker = $('#color-picker-wrap');
+		$picker.css('height','0');
+		$picker.data('open',false);
+
+		// if (typeof offset == 'undefined') {
+		// 	var offset = 0;
+		// 	$scope.results = [];
+		// }
 
 		$scope.offset += $scope.per_page;
 
@@ -45,13 +49,18 @@ App.Controllers.MainCtrl = function ($scope, $http) {
 			$scope.results = [];
 			$scope.$apply();
 		} else {
-			q += "&resultOffset=" + offset;
+			$('header').addClass('loading');
+			$scope.$apply();
+			// q += "&resultOffset=" + offset;
 			$http.jsonp('http://www.colourlovers.com/api/palettes&jsonCallback=JSON_CALLBACK&showPaletteWidths=1&numResults=' + $scope.per_page + q)
 			.success(function(data, status, headers, config){
-				$scope.results = $scope.results.concat(data);
+				// $scope.results = $scope.results.concat(data);
+				$scope.results = data;
+				$('header').removeClass('loading');
 			})
 			.error(function(data, status, headers, config){
 				$scope.errors = "Something went wrong";
+				$('header').removeClass('loading');
 			})
 		}
 

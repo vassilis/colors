@@ -11,7 +11,7 @@
 
 <div ng-repeat="palette in palettes" class="palette" ng-class="{'active': $index == active}">
 	
-	<h1><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
+	<h1 class="hidden-xs"><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
 	
 	<div color class="color" ng-repeat="color in palette.colors" style="background:#{{color}};height:{{100/palette.colors.length}}%;">
 		<span qclip class="clip" data-clipboard-text="#{{color}}">#{{color}}</span>

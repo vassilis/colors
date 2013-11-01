@@ -12,19 +12,19 @@
 	font-size: 32px;
 	color: #4A0000;
 	cursor: pointer;
-	margin-right: 10px;
+	/*margin-right: 10px;*/
 	padding: 0;
 	transition: color .2s;
 	line-height: 1;
 }
 
 .search button:hover {
-	color: #FFF;
+	color: #FFF !important;
 }
 
 .search button:focus {
 	outline: 0;
-	color: #FFF;
+	color: #4A0000;
 }
 
 .q-lover input {
@@ -65,4 +65,26 @@
 
 .q-order label {
 	color: #E9BA84;
+}
+
+.color-preview div {
+	background-color: #111;
+	width: 16%;
+	height: 34px;
+	line-height: 36px;
+	margin-right: 4%;
+	float: left;
+	text-align: center;
+	font-size: 1.2em;
+	border: 1px solid #444;
+}
+
+.color-preview :last-child {
+	margin: 0;
+	/*width: 20%;*/
+}
+
+.color-preview i {
+	background-color: #FFF;
+	border-radius: 50%;
 }

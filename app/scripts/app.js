@@ -147,6 +147,11 @@ App.directive('pcolor', function(){
 			var $el = $(el);
 			$el.on('click', function(event){
 				$('#q-hex').val($el.data('color'));
+				// if ($el.html() == '') {
+				// 	$el.html('<i class="icon-checkmark"></i>');
+				// } else {
+				// 	$el.html('');
+				// }
 			})
 		}
 	}
@@ -157,7 +162,6 @@ App.directive('qhex', function(){
 		link: function(scope, el, attrs) {
 			var $el = $(el);
 			$el.on('click', function(event){
-				$('#color-picker-wrap').css('height','400px');
 			})
 		}
 	}
@@ -170,7 +174,24 @@ App.directive('search', function(){
 			$el.on('keyup', function(event){
 				if (event.which == 13) {
 					scope.$parent.search();
-					$('#color-picker-wrap').css('height','0');
+				}
+			})
+		}
+	}
+})
+
+App.directive('droplet', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var $el = $(el);
+			var $picker = $('#color-picker-wrap');
+			$el.on('click', function(event){
+				if ($picker.data('open')) {
+					$picker.css('height','0');
+					$picker.data('open',false);
+				} else {
+					$picker.css('height','400px');
+					$picker.data('open',true);
 				}
 			})
 		}

@@ -3,7 +3,7 @@
 <div class="search" search data-function="search">
 	<div class="row">
 
-		<div class="col-md-4 color-preview" id="color-preview">
+		<div class="col-md-4 color-preview hidden-xs" id="color-preview">
 			<div pcolor></div>
 			<div pcolor></div>
 			<div pcolor></div>
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		-->
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="q-hex text-center">
 				<!-- <label>hex</label><br> -->
 				<input type="text" id="q-hex" class="form-control" tabindex="1" placeholder="FFCACA, 333333" qhex>
@@ -37,7 +37,7 @@
 			<input type="text" id="q-hex-logic">
 		</div>
 		-->
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="q-keywords text-center">
 				<!-- <label>keywords</label><br> -->
 				<input type="text" id="q-keywords" class="form-control" tabindex="2" placeholder="smooth">
@@ -63,21 +63,23 @@
 			</div>
 		</div>
 		-->
-		<!--
-		<div class="col-md-2">
-			<div class="form-group">
-				<label>&nbsp;</label><br>
-				<button ng-click="search();" tabindex="6"><i class="icon-search"></i></button>
-				<button ng-click="reset();" ng-show="results.length" tabindex="7"><i class="icon-erase"></i></button>
-			</div>
+		
+		<div class="col-md-2 hidden-xs">
+			<button droplet><i class="icon-droplet"></i></button>
+			<button ng-click="search();" tabindex="6"><i class="icon-search"></i></button>
+			<button ng-click="reset();" ng-show="results.length" tabindex="7"><i class="icon-cross2"></i></button>
 		</div>
-		-->
+		
 	</div>
 </div>
 
 <div id="color-picker-wrap" class="color-picker-wrap">
 	<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
 </div>
+
+<header>
+	<span><i class="icon-heart2"></i></span>
+</header>
 
 <div ng-show="results.length">
 	<!-- <div class="alert alert-info">http://www.colourlovers.com/api/palettes{{q}}</div> -->

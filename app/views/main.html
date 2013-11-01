@@ -1,10 +1,6 @@
 
 <div ng-include="'views/search.html'"></div>
 
-<header ng-hide="results.length">
-	<i class="icon-heart2"></i>
- </header>
-
 <!--
 <div class="bookmarks" ng-hide="results.length">
 	<a href="/#/palettes/top" class="big-fat-btn">Top Palettes</a>
@@ -14,7 +10,7 @@
 -->
 
 <div ng-hide="results.length">
-	<div ng-repeat="palette in palettes" class="q-palette" ng-show="palette.colors.length" qpalette>
+	<div ng-repeat="palette in palettes" class="q-palette active" ng-show="palette.colors.length" qpalette>
 		<div class="q-result-title">
 			<a href="/#/palettes/{{palette.id}}" target="_blank">{{palette.title}} <small>by {{palette.userName}}</small></a>
 		</div>
@@ -28,6 +24,7 @@
 </div>
 
 <footer class="text-center">
+	<i class="icon-heart"></i><br>
 	Experimenting with the COLOURlovers API<br>
 	Hopefully a place to relax and get inspired
 </footer>
