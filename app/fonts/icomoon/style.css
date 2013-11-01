@@ -47,3 +47,24 @@
 .icon-brush:before {
 	content: "\e607";
 }
+.icon-palette:before {
+	content: "\e608";
+}
+.icon-paperplane:before {
+	content: "\e609";
+}
+.icon-layout:before {
+	content: "\e60a";
+}
+.icon-heart:before {
+	content: "\e60b";
+}
+.icon-heart2:before {
+	content: "\e60c";
+}
+.icon-erase:before {
+	content: "\e60d";
+}
+.icon-list:before {
+	content: "\e60e";
+}
