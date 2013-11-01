@@ -62,16 +62,3 @@ App.Controllers.SearchCtrl = function ($scope, $http) {
 	}
 
 }
-
-
-App.directive('qcolor', function(){
-	return {
-		link: function(scope, el, attrs) {
-			var $el = $(el);
-			$el.on('click', function(event){
-				$el.toggleClass('active');
-				$el.siblings().removeClass('active');
-			})
-		}
-	}
-})

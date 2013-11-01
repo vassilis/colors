@@ -1,15 +1,14 @@
 
 
-.container {
-	/*background-color: #000;*/
-}
+@import 'search.css';
+@import 'buttons.css';
+
 
 body {
 	background: #111;
 	font-family: 'Share Tech', sans-serif;
 	color: #111;
 	margin: 0;
-	/*overflow: hidden;*/
 }
 
 body.light {
@@ -18,10 +17,15 @@ body.light {
 
 header {
 	background-color: #000;
-	color: #C7F464;
-	font-size: 10em;
+	color: white;
 	text-align: center;
-	padding: 100px 0;
+	padding: 50px 0;
+	margin-bottom: 1px;
+}
+
+header i {
+	color: #4A0000;
+	font-size: 10em;
 }
 
 .palette {
@@ -40,7 +44,7 @@ h1 {
 	margin: 0;
 	position: absolute;
 	top: 200px;
-	right: 150px;
+	right: 100px;
 	text-align: right;
 	font-weight: normal;
 }
@@ -55,9 +59,19 @@ hr {
 	border-style: solid;
 }
 
-a:hover {
-	color: #FFF;
+a {
+	transition: color .2s;
+}
+
+a:hover,
+a:active,
+a:visited {
 	text-decoration: none;
+}
+
+a:focus {
+	text-decoration: none;
+	outline: 1px #FFF solid;
 }
 
 .title {
@@ -91,135 +105,42 @@ h1 small {
 }
 
 .color span {
+	transform:rotate(-90deg);
 	-webkit-transform: rotate(-90deg);
+	-ms-transform:rotate(-90deg);
 	position: absolute;
 	right: -45px;
 	top: 44%;
 	z-index: 1;
 	font-size: 1.1em;
 	cursor: default;
-	/*font-family: monospace;*/
-	color: #333;
+	color: #444;
 }
 
 .light .color span {
 	color: #DDD;
 }
 
-svg {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
-svg path {
-	fill: #111;
-}
-
-.buttons {
-	position: absolute;
-	bottom: 80px;
-	right: 30px;
-	z-index: 10;
-	text-align: center;
-}
-
-.btn-icon {
-	border: 0;
-	padding: 5px 22px;
-	margin: 0;
-	line-height: 1;
-	outline: 0;
-	background: none;
-	color: #AAA;
-	background-color: #222;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.btn-icon:hover {
-	color: #FFF;
-	text-decoration: none;
-}
-
-.btn-icon:active {
-	color: #000;
-}
-
-.btn-icon[disabled] {
-	color: #444;
-}
-
-.light .btn-icon {
-	background-color: #EEE;
-	color: #999;
-}
-.light .btn-icon:hover {
-	color: #666;
-}
-.light .btn-icon:active {
-	color: #CCC;
-}
-.light .btn-icon[disabled] {
-	color: #CCC;
-}
-
-.btn-icon i {
-	font-size: 40px;
-	line-height: 1;
-}
-
-.tools {
-	position: absolute;
-	bottom: 30px;
-	right: 30px;
-	z-index: 10;
-	text-align: center;
-}
-
-.tools .btn-icon {
-	padding: 10px;
-}
-
-.tools i {
-	font-size: 20px;
-}
-
-/*::selection{
-	background-color: transparent;
-	color: #FFF;
-}
-::-moz-selection {
-	background-color: transparent;
-	color: #FFF;
-}
-
-.light ::selection{
-	color: #000;
-}
-.light ::-moz-selection {
-	color: #000;
-}*/
-
-.big-fat-btn {
+a.big-fat-btn {
 	display: block;
-	padding: 10px;
+	padding: 10px 30px;
 	text-align: center;
-	color: #4ECDC4;
 	font-size: 3em;
 	cursor: pointer;
 	text-decoration: none;
 	text-align: left;
+	color: #4A0000;
 	background-color: #000;
-	/*transition: font-size .2s;*/
 }
 
-.big-fat-btn:hover {
-	color: #C7F464;
-	/*font-size: 8em;*/
+a.big-fat-btn:hover {
+	color: #FFF;
 	text-decoration: none;
+}
+
+a.big-fat-btn:focus {
+	color: #FFF;
+	outline: 0;
 }
 
 .bookmarks {
@@ -235,35 +156,28 @@ label {
 	color: #FFF;
 }
 
-input[type="text"]{
-	padding: 0;
-	font-size: 2em;
-	border: 0;
-	width: 100%;
-}
-
-.form-help {
-	color: #FFF;
-}
-
 .q-palette {
-	margin: 0 0 100px 0;
+	background-color: #000;
+	padding: 30px 30px 100px;
+	margin-bottom: 1px;
 }
 
-.q-colors {
+.q-colors.active .q-color {
+	height: 240px;
 }
 
 .q-color {
-	height: 200px;
+	height: 60px;
 	float: left;
 	position: relative;
+	transition: height .2s;
 }
 
 .q-color span {
 	position: absolute;
 	left: 10%;
 	bottom: -30px;
-	color: #333;
+	color: #444;
 	width: 80%;
 	text-align: center;
 }
@@ -273,14 +187,18 @@ input[type="text"]{
 }
 
 .q-result-title {
-	color: #FFF;
 	font-size: 1.5em;
 	padding: 0 0 5px;
 }
 
+.q-result-title a {
+	color: #FFF;
+}
+
+
 .btn, .form-control {
-	border: 0;
 	border-radius: 0;
+	border: 0;
 }
 
 .clip {
@@ -298,10 +216,4 @@ input[type="text"]{
 
 .zeroclipboard-is-active {
 	opacity: 0;
-}
-
-.search {
-	background-color: #000;
-	padding: 10px;
-	margin: 20px 0;
 }

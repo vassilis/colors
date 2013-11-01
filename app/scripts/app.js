@@ -55,3 +55,16 @@ App.directive('qclip', function(){
 		}
 	}
 })
+
+App.directive('qcolor', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var $el = $(el);
+			$el.on('click', function(event){
+				$el.parent().toggleClass('active');
+				$el.toggleClass('active');
+				$el.siblings().removeClass('active');
+			})
+		}
+	}
+})
