@@ -26,6 +26,18 @@ header {
 	overflow: hidden;
 }
 
+header:after {
+	content : "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url("/images/Van_Gogh_Starry_Night.jpg") 50% 50%;
+	width: 100%;
+	height: 300px;
+	opacity : 0.05;
+}
+
 header span {
 	position: absolute;
 	top: 50%;
