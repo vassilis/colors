@@ -4,6 +4,7 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 
 	$scope.reset = function(){
 		$scope.results = [];
+		$scope.color = '';
 	}
 
 	$scope.search = function(){
@@ -20,6 +21,7 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 			
 			var Color = net.brehaut.Color;
 			var color = Color(hex);
+			$scope.color = color;
 
 			$scope.results = [
 				{ title: "Complementary", colors: color.complementaryScheme() },

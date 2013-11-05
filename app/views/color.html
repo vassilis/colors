@@ -31,7 +31,12 @@
 </div>
 
 <header>
-	<span><i class="icon-heart2"></i></span>
+	<div>S: {{color.getSaturation()}}</div>
+	<div>V: {{color.getValue()}}</div>
+	<div>L: {{color.getLightness()}}</div>
+	<div>L: {{color.getLuminance()}}</div>
+	<div>A: {{color.getAlpha()}}</div>
+	<div><i class="icon-heart2"></i></div>
 </header>
 
 <div ng-show="results.length">
