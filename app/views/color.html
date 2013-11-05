@@ -1,0 +1,101 @@
+
+
+<div class="search" search data-function="search">
+	<div class="row">
+
+		<div class="col-md-3 color-preview hidden-xs" id="color-preview">
+			<div pcolor></div>
+			<div pcolor></div>
+			<div pcolor></div>
+			<div pcolor></div>
+			<div pcolor></div>
+		</div>
+
+		<!--
+		<div class="col-md-2 col-md-offset-2">
+			<div class="form-group q-lover">
+				<label>lover</label><br>
+				<input type="text" id="q-lover" class="form-control" tabindex="1">
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group q-hue">
+				<label>hue</label><br>
+				<input type="text" id="q-hue" class="form-control" tabindex="2">
+			</div>
+		</div>
+		-->
+		<div class="col-md-3">
+			<div class="q-hex text-center">
+				<!-- <label>hex</label><br> -->
+				<input type="text" id="q-hex" class="form-control" tabindex="1" placeholder="FFCACA, 333333" qhex>
+			</div>
+		</div>
+		<!--
+		<div class="form-group">
+			<label>hex-logic</label><br>
+			<input type="text" id="q-hex-logic">
+		</div>
+		-->
+		<div class="col-md-3">
+			<div class="q-keywords text-center">
+				<!-- <label>keywords</label><br> -->
+				<input type="text" id="q-keywords" class="form-control" tabindex="2" placeholder="smooth">
+			</div>
+		</div>
+		<!--
+		<div class="form-group">
+			<label>keywords-exact</label><br>
+			<input type="text" id="q-keywords-exact">
+		</div>
+		-->
+		<!--
+		<div class="col-md-2">
+			<div class="form-group q-order">
+				<label>order</label><br>
+				<select id="q-order" class="form-control" tabindex="5">
+					<option value="dateCreated">Date Created</option>
+					<option value="score">Score</option>
+					<option value="name">Name</option>
+					<option value="numVotes">Votes</option>
+					<option value="numViews">Views</option>
+				</select>
+			</div>
+		</div>
+		-->
+		
+		<div class="col-md-3 hidden-xs">
+			<button droplet><i class="icon-droplet"></i></button>
+			<button ng-click="search();" tabindex="6"><i class="icon-search"></i></button>
+			<button ng-click="reset();" ng-show="results.length" tabindex="7"><i class="icon-cross2"></i></button>
+		</div>
+		
+	</div>
+</div>
+
+<div id="color-picker-wrap" class="color-picker-wrap">
+	<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
+</div>
+
+<header>
+	<span><i class="icon-heart2"></i></span>
+</header>
+
+<div ng-show="results.length">
+	<!-- <div class="alert alert-info">http://www.colourlovers.com/api/palettes{{q}}</div> -->
+	<div ng-repeat="palette in results" class="q-palette" ng-show="palette.colors.length" qpalette>
+		<div class="q-result-title">
+			<!-- <a href="/#/palettes/{{palette.id}}" target="_blank">{{palette.title}}</a> -->
+			{{palette.title}}
+		</div>
+		<div class="q-colors clearfix">
+			<div class="q-color" ng-repeat="color in palette.colors" style="background:{{color.toCSS()}};width:{{100 / palette.colors.length}}%;">
+				<span qclip class="clip" data-clipboard-text="{{color.toCSS()}}">{{color.toCSS()}}</span>
+			</div>
+		</div>
+	</div>
+	<!-- <button ng-click="search(offset+per_page)" class="btn btn-default btn-block btn-lg">Load More</button> -->
+	<!-- <br><br> -->
+</div>
+
+<div ng-include="'views/shared/footer.html'"></div>
