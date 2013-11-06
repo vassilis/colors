@@ -24,7 +24,7 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 			var color = Color(hex);
 			$scope.color = color;
 
-			$('header').removeClass('lightness');
+			$('header').removeClass('lightness').css('background-color', hex);
 			if (color.getLightness() > 0.5) {
 				$('header').addClass('lightness');
 			}

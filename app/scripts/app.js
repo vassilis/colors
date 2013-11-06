@@ -5,16 +5,16 @@ window.App = angular.module('colourloversClientApp', [])
 App.config(function ($routeProvider) {
 	$routeProvider
 		.when('/', {
+			templateUrl: 'views/color.html',
+			controller: 'App.Controllers.ColorCtrl'
+		})
+		.when('/love', {
 			templateUrl: 'views/main.html',
 			controller: 'App.Controllers.MainCtrl'
 		})
 		.when('/search', {
 			templateUrl: 'views/search.html',
 			controller: 'App.Controllers.SearchCtrl'
-		})
-		.when('/color', {
-			templateUrl: 'views/color.html',
-			controller: 'App.Controllers.ColorCtrl'
 		})
 		.when('/palettes/top', {
 			templateUrl: 'views/palettes.html',
@@ -88,6 +88,8 @@ App.directive('colorpicker', function(){
 	return {
 		link: function(scope, el, attrs) {
 
+			var $el = $(el);
+
 			// http://www.webdesignerdepot.com/2013/03/how-to-create-a-color-picker-with-html5-canvas/
 
 			var canvas = el[0].getContext('2d');
@@ -104,7 +106,7 @@ App.directive('colorpicker', function(){
 			var hex = '';
 			var colors = [];
 
-			$(el).on('mousemove', function(event){
+			$el.on('mousemove', function(event){
 				// getting user coordinates
 				var x = event.pageX - this.offsetLeft;
 				var y = event.pageY - this.offsetTop;
@@ -121,16 +123,20 @@ App.directive('colorpicker', function(){
 				$('header').css('background-color', '#' + hex);
 			})
 
-			$(el).on('click', function(event){
-				var $preview = $('#color-preview > div');
+			$el.on('click', function(event){
+				// var $preview = $('#color-preview > div');
 
-				if (colors.length == 5)
-					colors.splice(0,1);
-				colors.push(hex);
+				// if (colors.length == 5)
+				// 	colors.splice(0,1);
+				// colors.push(hex);
 
-				for (var i = 0; i <= colors.length; i++) {
-					$preview.eq(i).data('color',colors[i]).css('background-color', '#' + colors[i]);
-				}
+				// for (var i = 0; i <= colors.length; i++) {
+				// 	$preview.eq(i).data('color',colors[i]).css('background-color', '#' + colors[i]);
+				// }
+				scope.$apply(function() {
+					$('#q-hex').val(hex);
+					scope.$broadcast('search', true);
+				})
 			})
 
 			// http://www.javascripter.net/faq/rgbtohex.htm
@@ -165,7 +171,12 @@ App.directive('qhex', function(){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.on('click', function(event){
+			$el.on('keyup', function(event){
+				if (event.which == 13) {
+					scope.$apply(function() {
+						scope.$broadcast('search', true);
+					});
+				}
 			})
 		}
 	}
@@ -195,6 +206,9 @@ App.directive('droplet', function(){
 				if ($picker.data('open')) {
 					$picker.css('height','0');
 					$picker.data('open',false);
+					scope.$apply(function() {
+						scope.$broadcast('search', true);
+					})
 				} else {
 					$picker.css('height','400px');
 					$picker.data('open',true);
@@ -219,7 +233,7 @@ App.directive('qhue', function(){
 				}
 			}).change(function(){
 				scope.$apply(function() {
-					$('#q-hex').val(scope.color.setHue($el.val()).toCSS());
+					$('#q-hex').val(scope.color.setHue($el.val()).toCSS().substr(1));
 					scope.$broadcast('search', true);
 					// scope.$broadcast('saturation', $el.val());
 				});
@@ -247,7 +261,7 @@ App.directive('qsaturation', function(){
 				}
 			}).change(function(){
 				scope.$apply(function() {
-					$('#q-hex').val(scope.color.setSaturation($el.val()).toCSS());
+					$('#q-hex').val(scope.color.setSaturation($el.val()).toCSS().substr(1));
 					scope.$broadcast('search', true);
 					// scope.$broadcast('saturation', $el.val());
 				});
@@ -298,7 +312,7 @@ App.directive('qlightness', function(){
 				}
 			}).change(function(){
 				scope.$apply(function() {
-					$('#q-hex').val(scope.color.setLightness($el.val()).toCSS());
+					$('#q-hex').val(scope.color.setLightness($el.val()).toCSS().substr(1));
 					scope.$broadcast('search', true);
 					// scope.$broadcast('lightness', $el.val());
 				});

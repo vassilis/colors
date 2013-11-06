@@ -1,5 +1,6 @@
 
 
+<!--
 <div class="search" search data-function="search">
 	<div class="row">
 
@@ -13,7 +14,6 @@
 
 		<div class="col-md-3">
 			<div class="q-hex text-center">
-				<!-- <label>hex</label><br> -->
 				<input type="text" id="q-hex" class="form-control" tabindex="1" placeholder="FFCACA, 333333" qhex>
 			</div>
 		</div>
@@ -25,9 +25,18 @@
 		
 	</div>
 </div>
+-->
+
+<div class="top">
+	<button droplet><i class="icon-droplet"></i></button>
+</div>
 
 <div id="color-picker-wrap" class="color-picker-wrap">
 	<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
+</div>
+
+<div class="hex">
+	<input type="text" id="q-hex" tabindex="1" placeholder="000000" qhex autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
 </div>
 
 <header style="background-color:{{color.toCSS()}}">
@@ -40,10 +49,10 @@
 		<br><br><div>Luminance: {{color.getLuminance()}}</div>
 	</div>
 	<div class="sliders" ng-show="results.length">
-		<div data-val="{{color.getHue()}}" qhue></div>
-		<div data-val="{{color.getSaturation()}}" qsaturation></div>
+		<div data-val="{{color.getHue()}}" qhue style="background-color:{{color.toCSS()}}"></div>
+		<div data-val="{{color.getSaturation()}}" qsaturation style="background-color:{{color.toCSS()}}"></div>
 		<!-- <div data-val="{{color.getValue()}}" qvalue></div> -->
-		<div data-val="{{color.getLightness()}}" qlightness></div>
+		<div data-val="{{color.getLightness()}}" qlightness style="background-color:{{color.toCSS()}}"></div>
 		<!-- <div data-val="{{color.getAlpha()}}" qalpha></div> -->
 	</div>
 	<span><i class="icon-heart2"></i></span>
@@ -52,10 +61,10 @@
 <div ng-show="results.length">
 	<!-- <div class="alert alert-info">http://www.colourlovers.com/api/palettes{{q}}</div> -->
 	<div ng-repeat="palette in results" class="q-palette" ng-show="palette.colors.length" qpalette>
-		<div class="q-result-title">
+		<!-- <div class="q-result-title"> -->
 			<!-- <a href="/#/palettes/{{palette.id}}" target="_blank">{{palette.title}}</a> -->
-			{{palette.title}}
-		</div>
+			<!-- {{palette.title}} -->
+		<!-- </div> -->
 		<div class="q-colors clearfix">
 			<div class="q-color" ng-repeat="color in palette.colors" style="background:{{color.toCSS()}};width:{{100 / palette.colors.length}}%;">
 				<span qclip class="clip" data-clipboard-text="{{color.toCSS()}}">{{color.toCSS()}}</span>
@@ -66,4 +75,7 @@
 	<!-- <br><br> -->
 </div>
 
-<div ng-include="'views/shared/footer.html'"></div>
+<!-- <div ng-include="'views/shared/footer.html'"></div> -->
+<footer class="text-center">
+	<a href="https://twitter.com/vassilisterzo" target="_blank"><i class="icon-twitter"></i>
+</footer>
