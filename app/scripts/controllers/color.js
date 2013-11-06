@@ -2,9 +2,11 @@
 
 App.Controllers.ColorCtrl = function ($scope, $http) {
 
+	var Color = net.brehaut.Color;
+
 	$scope.reset = function(){
 		$scope.results = [];
-		$scope.color = '';
+		$scope.color = Color('#000000');
 	}
 
 	$scope.search = function(){
@@ -18,10 +20,14 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 			var $picker = $('#color-picker-wrap');
 			$picker.css('height','0');
 			$picker.data('open',false);
-			
-			var Color = net.brehaut.Color;
+
 			var color = Color(hex);
 			$scope.color = color;
+
+			$('header').removeClass('lightness');
+			if (color.getLightness() > 0.5) {
+				$('header').addClass('lightness');
+			}
 
 			$scope.results = [
 				{ title: "Complementary", colors: color.complementaryScheme() },
@@ -47,5 +53,25 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 		}
 
 	}
+
+	$scope.$on('search', function(evt) {
+		$scope.search();
+	});
+
+	// $scope.$on('saturation', function(evt, newvalue) {
+	// 	$scope.color = $scope.color.setSaturation(newvalue);
+	// });
+
+	// $scope.$on('value', function(evt, newvalue) {
+	// 	$scope.color = $scope.color.setValue(newvalue);
+	// });
+
+	// $scope.$on('lightness', function(evt, newvalue) {
+	// 	$scope.color = $scope.color.setLightness(newvalue);
+	// });
+
+	// $scope.$on('alpha', function(evt, newvalue) {
+	// 	$scope.color = $scope.color.setAlpha(newvalue);
+	// });
 
 }

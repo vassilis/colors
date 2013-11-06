@@ -3,6 +3,7 @@
 @import 'search.css';
 @import 'buttons.css';
 @import 'scrollbar.css';
+@import 'jquery.nouislider.css';
 
 
 body {
@@ -24,6 +25,7 @@ header {
 	margin-bottom: 1px;
 	position: relative;
 	overflow: hidden;
+	border: 30px #000 solid;
 }
 
 /*header:after {
@@ -50,6 +52,7 @@ header span {
 	text-align: center;
 	line-height: 0;
 	transition: font-size 2s;
+	display: none;
 }
 
 header span i {
@@ -73,6 +76,10 @@ header.loading span {
 @keyframes spin {
 	100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }*/
+
+header.lightness span {
+	color: #000;
+}
 
 .palette {
 	position: absolute;
@@ -306,4 +313,35 @@ footer i {
 	overflow: hidden;
 	transition: height .3s;
 	margin-bottom: 1px;
+}
+
+.values {
+	width: 50%;
+	color: #FFF;
+	background-color: rgba(0, 0, 0, .5);
+	text-align: left;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	padding: 10px;
+	height: 220px;
+}
+
+.values div {
+	margin-bottom: 13px;
+}
+
+.sliders {
+	width: 50%;
+	background-color: rgba(0, 0, 0, .5);
+	text-align: left;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	padding: 10px;
+	height: 220px;
+}
+
+.sliders div {
+	margin-bottom: 31px;
 }

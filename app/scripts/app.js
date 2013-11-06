@@ -171,13 +171,15 @@ App.directive('qhex', function(){
 	}
 })
 
-App.directive('search', function(){
+App.directive('search', function($rootScope){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
 			$el.on('keyup', function(event){
 				if (event.which == 13) {
-					scope.$parent.search();
+					scope.$apply(function() {
+						scope.$broadcast('search', true);
+					});
 				}
 			})
 		}
@@ -201,3 +203,118 @@ App.directive('droplet', function(){
 		}
 	}
 })
+
+App.directive('qhue', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var $el = $(el);
+			$el.noUiSlider({
+				range: [0, 360],
+				start: (typeof scope.color != 'undefined') ? scope.color.getHue() : 360,
+				handles: 1,
+			}).change(function(){
+				scope.$apply(function() {
+					$('#q-hex').val(scope.color.setHue($el.val()).toCSS());
+					scope.$broadcast('search', true);
+					// scope.$broadcast('saturation', $el.val());
+				});
+			});
+			scope.$watch('color', function(newVal) {
+				var val = (typeof scope.color != 'undefined') ? scope.color.getHue() : 1;
+				$el.val(val);
+			});
+		}
+	}
+})
+
+App.directive('qsaturation', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var $el = $(el);
+			$el.noUiSlider({
+				range: [0, 1],
+				start: (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1,
+				handles: 1,
+			}).change(function(){
+				scope.$apply(function() {
+					$('#q-hex').val(scope.color.setSaturation($el.val()).toCSS());
+					scope.$broadcast('search', true);
+					// scope.$broadcast('saturation', $el.val());
+				});
+			});
+			scope.$watch('color', function(newVal) {
+				var val = (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1;
+				$el.val(val);
+			});
+		}
+	}
+})
+
+// App.directive('qvalue', function(){
+// 	return {
+// 		link: function(scope, el, attrs) {
+// 			var $el = $(el);
+// 			$el.noUiSlider({
+// 				range: [0, 1],
+// 				start: (typeof scope.color != 'undefined') ? scope.color.getValue() : 1,
+// 				handles: 1,
+// 			}).change(function(){
+// 				scope.$apply(function() {
+// 					$('#q-hex').val(scope.color.setValue($el.val()).toCSS());
+// 					scope.$broadcast('search', true);
+// 					// scope.$broadcast('value', $el.val());
+// 				});
+// 			});
+// 			scope.$watch('color', function(newVal) {
+// 				var val = (typeof scope.color != 'undefined') ? scope.color.getValue() : 1;
+// 				$el.val(val);
+// 			});
+// 		}
+// 	}
+// })
+
+App.directive('qlightness', function(){
+	return {
+		link: function(scope, el, attrs) {
+			var $el = $(el);
+			$el.noUiSlider({
+				range: [0, 1],
+				start: (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1,
+				handles: 1,
+			}).change(function(){
+				scope.$apply(function() {
+					$('#q-hex').val(scope.color.setLightness($el.val()).toCSS());
+					scope.$broadcast('search', true);
+					// scope.$broadcast('lightness', $el.val());
+				});
+			});
+			scope.$watch('color', function(newVal) {
+				var val = (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1;
+				$el.val(val);
+			});
+		}
+	}
+})
+
+// App.directive('qalpha', function(){
+// 	return {
+// 		link: function(scope, el, attrs) {
+// 			var $el = $(el);
+// 			$el.noUiSlider({
+// 				range: [0, 1],
+// 				start: (typeof scope.color != 'undefined') ? scope.color.getAlpha() : 1,
+// 				handles: 1,
+// 			}).change(function(){
+// 				scope.$apply(function() {
+// 					// $('#q-hex').val(scope.color.setAlpha($el.val()).toCSSHex());
+// 					scope.$broadcast('search', true);
+// 					scope.$broadcast('alpha', $el.val());
+// 				});
+// 			});
+// 			scope.$watch('color', function(newVal) {
+// 				var val = (typeof scope.color != 'undefined') ? scope.color.getAlpha() : 1;
+// 				$el.val(val);
+// 			});	
+// 		}
+// 	}
+// })

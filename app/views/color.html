@@ -30,13 +30,23 @@
 	<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
 </div>
 
-<header>
-	<div>S: {{color.getSaturation()}}</div>
-	<div>V: {{color.getValue()}}</div>
-	<div>L: {{color.getLightness()}}</div>
-	<div>L: {{color.getLuminance()}}</div>
-	<div>A: {{color.getAlpha()}}</div>
-	<div><i class="icon-heart2"></i></div>
+<header style="background-color:{{color.toCSS()}}">
+	<div class="values" ng-show="results.length">
+		<div>Hue: {{color.getHue()}}</div>
+		<div>Saturation: {{color.getSaturation()}}</div>
+		<!-- <div>Value: {{color.getValue()}}</div> -->
+		<div>Lightness: {{color.getLightness()}}</div>
+		<!-- <div>Alpha: {{color.getAlpha()}}</div> -->
+		<br><br><div>Luminance: {{color.getLuminance()}}</div>
+	</div>
+	<div class="sliders" ng-show="results.length">
+		<div data-val="{{color.getHue()}}" qhue></div>
+		<div data-val="{{color.getSaturation()}}" qsaturation></div>
+		<!-- <div data-val="{{color.getValue()}}" qvalue></div> -->
+		<div data-val="{{color.getLightness()}}" qlightness></div>
+		<!-- <div data-val="{{color.getAlpha()}}" qalpha></div> -->
+	</div>
+	<span><i class="icon-heart2"></i></span>
 </header>
 
 <div ng-show="results.length">
