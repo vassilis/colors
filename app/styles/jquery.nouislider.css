@@ -44,11 +44,11 @@
   width: 20px;
   margin: -22px 0 0 -10px;
   cursor: move;
-  background: #444;
+  background: #AAA;
 }
 
 .noUi-active {
-  background: #222;
+  background: #CCC;
 }
 
 .noUi-active:after {

@@ -212,6 +212,11 @@ App.directive('qhue', function(){
 				range: [0, 360],
 				start: (typeof scope.color != 'undefined') ? scope.color.getHue() : 360,
 				handles: 1,
+				slide: function(){
+					scope.$apply(function() {
+						scope.color = scope.color.setHue($el.val());
+					})
+				}
 			}).change(function(){
 				scope.$apply(function() {
 					$('#q-hex').val(scope.color.setHue($el.val()).toCSS());
@@ -235,6 +240,11 @@ App.directive('qsaturation', function(){
 				range: [0, 1],
 				start: (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1,
 				handles: 1,
+				slide: function(){
+					scope.$apply(function() {
+						scope.color = scope.color.setSaturation($el.val());
+					})
+				}
 			}).change(function(){
 				scope.$apply(function() {
 					$('#q-hex').val(scope.color.setSaturation($el.val()).toCSS());
@@ -281,6 +291,11 @@ App.directive('qlightness', function(){
 				range: [0, 1],
 				start: (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1,
 				handles: 1,
+				slide: function(){
+					scope.$apply(function() {
+						scope.color = scope.color.setLightness($el.val());
+					})
+				}
 			}).change(function(){
 				scope.$apply(function() {
 					$('#q-hex').val(scope.color.setLightness($el.val()).toCSS());
