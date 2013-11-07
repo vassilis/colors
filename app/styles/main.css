@@ -40,7 +40,7 @@ header {
 	background-color: #000;
 	text-align: center;
 	height: 300px;
-	margin-bottom: 1px;
+	/*margin-bottom: 1px;*/
 	position: relative;
 	overflow: hidden;
 	border: #000 solid;
@@ -233,7 +233,7 @@ label {
 .q-palette {
 	background-color: #000;
 	padding: 0 30px 30px;
-	margin-bottom: 1px;
+	/*margin-bottom: 1px;*/
 	transition: padding .2s;
 }
 

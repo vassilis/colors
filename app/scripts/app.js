@@ -249,7 +249,7 @@ App.directive('qhue', function($location){
 				// $('#q-hex').val(hex);
 				// scope.$broadcast('search', true);
 				// scope.$broadcast('saturation', $el.val());
-				scope.$apply();
+				setTimeout(function(){scope.$apply();}, 10);
 			});
 			// scope.$watch('color', function(newVal) {
 			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getHue() : 1;
@@ -273,14 +273,13 @@ App.directive('qsaturation', function($location){
 					})
 				}
 			}).change(function(){
-				scope.$apply(function() {
-					close_picker();
-					var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
-					$location.path("colors/" + hex);
-					// $('#q-hex').val(hex);
-					// scope.$broadcast('search', true);
-					// scope.$broadcast('saturation', $el.val());
-				});
+				close_picker();
+				var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
+				$location.path("colors/" + hex);
+				// $('#q-hex').val(hex);
+				// scope.$broadcast('search', true);
+				// scope.$broadcast('saturation', $el.val());
+				setTimeout(function(){scope.$apply();}, 10);
 			});
 			// scope.$watch('color', function(newVal) {
 			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1;
@@ -327,14 +326,13 @@ App.directive('qlightness', function($location){
 					})
 				}
 			}).change(function(){
-				scope.$apply(function() {
-					close_picker();
-					var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
-					$location.path("colors/" + hex);
-					// $('#q-hex').val(hex);
-					// scope.$broadcast('search', true);
-					// scope.$broadcast('lightness', $el.val());
-				});
+				close_picker();
+				var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
+				$location.path("colors/" + hex);
+				// $('#q-hex').val(hex);
+				// scope.$broadcast('search', true);
+				// scope.$broadcast('lightness', $el.val());
+				setTimeout(function(){scope.$apply();}, 10);
 			});
 			// scope.$watch('color', function(newVal) {
 			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1;
