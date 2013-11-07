@@ -25,15 +25,17 @@ body.light {
 }
 
 .top button {
-	background: none;
+	background: rgba(200,200,200,0);
 	border: 0;
 	font-size: 64px;
 	color: #444;
 	cursor: default;
-	padding: 0;
+	padding: 20px 25px;
+	margin-top: -20px;
 	transition: color .2s;
 	line-height: 1;
 	outline: 0;
+	border-radius: 50%;
 }
 
 header {

@@ -103,6 +103,7 @@ App.directive('colorpicker', function($location){
 		link: function(scope, el, attrs) {
 
 			var $el = $(el);
+			var Color = net.brehaut.Color;
 
 			// http://www.webdesignerdepot.com/2013/03/how-to-create-a-color-picker-with-html5-canvas/
 
@@ -136,6 +137,8 @@ App.directive('colorpicker', function($location){
 				// $('#q-hex').val(hex);
 				$('.icon-droplet').css('color','#' + hex);
 				$('header').css('background-color','#' + hex);
+				// var light = Color('#' + hex).getLightness();
+				// $('#btn-drop').css('background-color', "rgba(200, 200, 200, " + (0.2 - light.toFixed(2)) + ")");
 			})
 
 			$el.on('mouseout', function(event){
