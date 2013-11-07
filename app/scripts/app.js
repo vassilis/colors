@@ -191,14 +191,16 @@ App.directive('pcolor', function(){
 	}
 })
 
-App.directive('qhex', function(){
+App.directive('qhex', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
 			$el.on('keyup', function(event){
 				if (event.which == 13) {
 					scope.$apply(function() {
-						scope.$broadcast('search', true);
+						var hex = $.trim($el.val())
+						if (hex.charAt(0) == "#") hex = hex.substr(1);
+						if (hex.length == 6) $location.path("colors/" + hex);
 					});
 				}
 			})
@@ -206,20 +208,20 @@ App.directive('qhex', function(){
 	}
 })
 
-App.directive('search', function($rootScope){
-	return {
-		link: function(scope, el, attrs) {
-			var $el = $(el);
-			$el.on('keyup', function(event){
-				if (event.which == 13) {
-					scope.$apply(function() {
-						scope.$broadcast('search', true);
-					});
-				}
-			})
-		}
-	}
-})
+// App.directive('search', function($rootScope){
+// 	return {
+// 		link: function(scope, el, attrs) {
+// 			var $el = $(el);
+// 			$el.on('keyup', function(event){
+// 				if (event.which == 13) {
+// 					scope.$apply(function() {
+// 						scope.$broadcast('search', true);
+// 					});
+// 				}
+// 			})
+// 		}
+// 	}
+// })
 
 App.directive('droplet', function(){
 	return {
