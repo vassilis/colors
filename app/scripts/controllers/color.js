@@ -1,6 +1,6 @@
 'use strict';
 
-App.Controllers.ColorCtrl = function ($scope, $http, $routeParams) {
+App.Controllers.ColorCtrl = ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
 
 	var Color = net.brehaut.Color;
 
@@ -77,4 +77,4 @@ App.Controllers.ColorCtrl = function ($scope, $http, $routeParams) {
 	// 	$scope.color = $scope.color.setAlpha(newvalue);
 	// });
 
-}
+}]

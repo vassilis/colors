@@ -98,7 +98,7 @@ App.directive('qpalette', function(){
 	}
 })
 
-App.directive('colorpicker', function($location){
+App.directive('colorpicker', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 
@@ -173,7 +173,7 @@ App.directive('colorpicker', function($location){
 			}
 		}
 	}
-})
+}])
 
 App.directive('pcolor', function(){
 	return {
@@ -191,7 +191,7 @@ App.directive('pcolor', function(){
 	}
 })
 
-App.directive('qhex', function($location){
+App.directive('qhex', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -206,7 +206,7 @@ App.directive('qhex', function($location){
 			})
 		}
 	}
-})
+}])
 
 // App.directive('search', function($rootScope){
 // 	return {
@@ -244,7 +244,7 @@ App.directive('droplet', function(){
 	}
 })
 
-App.directive('qhue', function($location){
+App.directive('qhue', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -272,9 +272,9 @@ App.directive('qhue', function($location){
 			// });
 		}
 	}
-})
+}])
 
-App.directive('qsaturation', function($location){
+App.directive('qsaturation', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -302,7 +302,7 @@ App.directive('qsaturation', function($location){
 			// });
 		}
 	}
-})
+}])
 
 // App.directive('qvalue', function(){
 // 	return {
@@ -327,7 +327,7 @@ App.directive('qsaturation', function($location){
 // 	}
 // })
 
-App.directive('qlightness', function($location){
+App.directive('qlightness', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -355,7 +355,7 @@ App.directive('qlightness', function($location){
 			// });
 		}
 	}
-})
+}])
 
 // App.directive('qalpha', function(){
 // 	return {
