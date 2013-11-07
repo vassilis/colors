@@ -87,6 +87,9 @@ App.directive('qpalette', function(){
 				$el.siblings().removeClass('active');
 				if ($el.hasClass('active')) {
 					$el.siblings().addClass('fade');
+					setTimeout(function(){
+						$el.animatescroll({scrollSpeed:1000,easing:'easeOutBounce'});
+					}, 500);
 				} else {
 					$el.siblings().removeClass('fade');
 				}

@@ -313,7 +313,7 @@ label {
 }
 
 footer {
-	padding: 200px;
+	padding: 300px 30px;
 	background: #000;
 }
 
@@ -388,9 +388,4 @@ footer a {
 	background: #000;
 	padding-top: 20px;
 	/*border-top: 1px solid #444;*/
-}
-
-#results {
-	height: 400px;
-	overflow: auto;
 }
