@@ -33,6 +33,15 @@
 		<![endif]-->
 
 		<!-- Add your site or application content here -->
+		<div class="container">
+			<div class="top">
+				<button droplet><i class="icon-droplet" style="color:{{color.toCSS()}}"></i></button>
+			</div>
+
+			<div id="color-picker-wrap" class="color-picker-wrap">
+				<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
+			</div>
+		</div>
 		<div class="container" ng-view=""></div>
 
 		<!-- Google Analytics -->

@@ -17,10 +17,6 @@ App.Controllers.ColorCtrl = function ($scope, $http, $routeParams) {
 
 		if (hex != "#") {
 
-			var $picker = $('#color-picker-wrap');
-			$picker.css('height','0');
-			$picker.data('open',false);
-
 			var color = Color(hex);
 			$scope.color = color;
 

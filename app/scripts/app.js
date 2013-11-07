@@ -128,6 +128,10 @@ App.directive('colorpicker', function($location){
 				$('header').css('background-color','#' + hex);
 			})
 
+			$el.on('mouseout', function(event){
+				scope.$broadcast('search', true);
+			})
+
 			$el.on('click', function(event){
 				// var $preview = $('#color-preview > div');
 
@@ -138,15 +142,12 @@ App.directive('colorpicker', function($location){
 				// for (var i = 0; i <= colors.length; i++) {
 				// 	$preview.eq(i).data('color',colors[i]).css('background-color', '#' + colors[i]);
 				// }
-				var $picker = $('#color-picker-wrap');
-				$picker.css('height','0');
-
-				setTimeout(function(){
+				scope.$apply(function() {
+					close_picker();
 					$('#q-hex').val(hex);
 					$location.path("colors/" + hex);
-					scope.$apply();
-				}, 300);
-				// scope.$broadcast('search', true);
+					// scope.$broadcast('search', true);
+				})
 			})
 
 			// http://www.javascripter.net/faq/rgbtohex.htm
@@ -242,6 +243,7 @@ App.directive('qhue', function($location){
 					})
 				}
 			}).change(function(){
+				close_picker();
 				var hex = scope.color.setHue($el.val()).toCSS().substr(1);
 				$location.path("colors/" + hex);
 				// $('#q-hex').val(hex);
@@ -272,6 +274,7 @@ App.directive('qsaturation', function($location){
 				}
 			}).change(function(){
 				scope.$apply(function() {
+					close_picker();
 					var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
 					$location.path("colors/" + hex);
 					// $('#q-hex').val(hex);
@@ -325,6 +328,7 @@ App.directive('qlightness', function($location){
 				}
 			}).change(function(){
 				scope.$apply(function() {
+					close_picker();
 					var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
 					$location.path("colors/" + hex);
 					// $('#q-hex').val(hex);
@@ -362,3 +366,9 @@ App.directive('qlightness', function($location){
 // 		}
 // 	}
 // })
+
+window.close_picker = function() {
+	var $picker = $('#color-picker-wrap');
+	$picker.css('height','0');
+	$picker.data('open',false);
+}

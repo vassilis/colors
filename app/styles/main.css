@@ -43,7 +43,8 @@ header {
 	margin-bottom: 1px;
 	position: relative;
 	overflow: hidden;
-	border: 30px #000 solid;
+	border: #000 solid;
+	border-width: 20px 30px 30px;
 }
 
 /*header:after {
@@ -333,7 +334,7 @@ footer a {
 	height: 0;
 	overflow: hidden;
 	transition: height .3s;
-	margin-bottom: 1px;
+	/*margin-bottom: 1px;*/
 }
 
 .values {
@@ -358,9 +359,9 @@ footer a {
 	background-color: rgba(0, 0, 0, .5);
 	text-align: left;
 	position: absolute;
-	top: 10px;
+	top: 15px;
 	left: 0;
-	padding: 40px 10px 10px;
+	padding: 42px 20px 10px;
 	height: 220px;
 }
 
@@ -377,9 +378,10 @@ footer a {
 	outline: 0;
 	border: 0;
 	width: 100%;
-	padding-top: 10px;
 }
 
 .hex {
+	background: #000;
+	padding-top: 20px;
 	/*border-top: 1px solid #444;*/
 }
