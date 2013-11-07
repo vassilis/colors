@@ -1,0 +1,79 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class*="icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+	content: "\e600";
+}
+.icon-arrow-left:before {
+	content: "\e601";
+}
+.icon-arrow-right:before {
+	content: "\e602";
+}
+.icon-twitter:before {
+	content: "\e603";
+}
+.icon-info:before {
+	content: "\e604";
+}
+.icon-light-bulb:before {
+	content: "\e605";
+}
+.icon-shuffle:before {
+	content: "\e606";
+}
+.icon-brush:before {
+	content: "\e607";
+}
+.icon-palette:before {
+	content: "\e608";
+}
+.icon-paperplane:before {
+	content: "\e609";
+}
+.icon-layout:before {
+	content: "\e60a";
+}
+.icon-heart:before {
+	content: "\e60b";
+}
+.icon-heart2:before {
+	content: "\e60c";
+}
+.icon-list:before {
+	content: "\e60e";
+}
+.icon-droplet:before {
+	content: "\e60f";
+}
+.icon-checkmark:before {
+	content: "\e60d";
+}
+.icon-cross:before {
+	content: "\e610";
+}
+.icon-cross2:before {
+	content: "\e611";
+}
