@@ -1,0 +1,25 @@
+<div ng-include="'views/search.html'"></div>
+
+<!--
+<div class="bookmarks" ng-hide="results.length">
+	<a href="/#/palettes/top" class="big-fat-btn">Top Palettes</a>
+	<a href="/#/palettes/new" class="big-fat-btn">New Palettes</a>
+	<a href="/#/palettes" class="big-fat-btn">All Palettes</a>
+</div>
+-->
+
+<div ng-hide="results.length">
+	<div ng-repeat="palette in palettes" class="q-palette active" ng-show="palette.colors.length" qpalette="">
+		<div class="q-result-title">
+			<a href="/#/palettes/{{palette.id}}" target="_blank">{{palette.title}} <small>by {{palette.userName}}</small></a>
+		</div>
+		<div class="q-colors clearfix">
+			<!-- width:{{100 * palette.colorWidths[$index]}}%; -->
+			<div class="q-color" ng-repeat="color in palette.colors" style="background:#{{color}};width:{{100 / palette.colors.length}}%">
+				<span qclip="" class="clip" data-clipboard-text="#{{color}}">#{{color}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'views/shared/footer.html'"></div>

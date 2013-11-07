@@ -1,0 +1,25 @@
+<div class="buttons">
+	<button class="btn-icon" btn="" ng-disabled="active == 0" ng-click="active=active-1">
+		<i class="icon-arrow-left"></i>
+	</button>
+	<button class="btn-icon" btn="" ng-disabled="active == palettes.length - 1" ng-click="active=active+1">
+		<i class="icon-arrow-right"></i>
+	</button>
+</div>
+
+<div ng-repeat="palette in palettes" class="palette" ng-class="{'active': $index == active}">
+	
+	<h1 class="hidden-xs"><a class="title" href="{{palette.url}}" target="blank">{{palette.title}}</a> <small>by {{palette.userName}}</small></h1>
+	
+	<div color="" class="color" ng-repeat="color in palette.colors" style="background:#{{color}};height:{{100/palette.colors.length}}%">
+		<span qclip="" class="clip" data-clipboard-text="#{{color}}">#{{color}}</span>
+	</div>
+	
+	<div class="tools">
+		<a class="btn-icon" href="/#/"><i class="icon-search"></i></a>
+		<button class="btn-icon" light=""><i class="icon-light-bulb"></i></button>
+		<a class="btn-icon" href="/#/palettes/{{palette.id}}" target="_blank"><i class="icon-paperplane"></i></a>
+		<!-- <button class="btn-icon"><i class="icon-twitter"></i></button> -->
+	</div>
+
+</div>
