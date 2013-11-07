@@ -8,7 +8,11 @@ App.config(function ($routeProvider) {
 			templateUrl: 'views/color.html',
 			controller: 'App.Controllers.ColorCtrl'
 		})
-		.when('/love', {
+		.when('/colors/:hex', {
+			templateUrl: 'views/color.html',
+			controller: 'App.Controllers.ColorCtrl'
+		})
+		.when('/lovers', {
 			templateUrl: 'views/main.html',
 			controller: 'App.Controllers.MainCtrl'
 		})
@@ -84,7 +88,7 @@ App.directive('qpalette', function(){
 	}
 })
 
-App.directive('colorpicker', function(){
+App.directive('colorpicker', function($location){
 	return {
 		link: function(scope, el, attrs) {
 
@@ -120,7 +124,8 @@ App.directive('colorpicker', function(){
 				// making the color the value of the input
 				// $('#rgb input').val(rgb);
 				// $('#q-hex').val(hex);
-				$('header').css('background-color', '#' + hex);
+				$('.icon-droplet').css('color','#' + hex);
+				$('header').css('background-color','#' + hex);
 			})
 
 			$el.on('click', function(event){
@@ -133,10 +138,15 @@ App.directive('colorpicker', function(){
 				// for (var i = 0; i <= colors.length; i++) {
 				// 	$preview.eq(i).data('color',colors[i]).css('background-color', '#' + colors[i]);
 				// }
-				scope.$apply(function() {
+				var $picker = $('#color-picker-wrap');
+				$picker.css('height','0');
+
+				setTimeout(function(){
 					$('#q-hex').val(hex);
-					scope.$broadcast('search', true);
-				})
+					$location.path("colors/" + hex);
+					scope.$apply();
+				}, 300);
+				// scope.$broadcast('search', true);
 			})
 
 			// http://www.javascripter.net/faq/rgbtohex.htm
@@ -218,7 +228,7 @@ App.directive('droplet', function(){
 	}
 })
 
-App.directive('qhue', function(){
+App.directive('qhue', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -232,21 +242,22 @@ App.directive('qhue', function(){
 					})
 				}
 			}).change(function(){
-				scope.$apply(function() {
-					$('#q-hex').val(scope.color.setHue($el.val()).toCSS().substr(1));
-					scope.$broadcast('search', true);
-					// scope.$broadcast('saturation', $el.val());
-				});
+				var hex = scope.color.setHue($el.val()).toCSS().substr(1);
+				$location.path("colors/" + hex);
+				// $('#q-hex').val(hex);
+				// scope.$broadcast('search', true);
+				// scope.$broadcast('saturation', $el.val());
+				scope.$apply();
 			});
-			scope.$watch('color', function(newVal) {
-				var val = (typeof scope.color != 'undefined') ? scope.color.getHue() : 1;
-				$el.val(val);
-			});
+			// scope.$watch('color', function(newVal) {
+			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getHue() : 1;
+			// 	$el.val(val);
+			// });
 		}
 	}
 })
 
-App.directive('qsaturation', function(){
+App.directive('qsaturation', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -261,15 +272,17 @@ App.directive('qsaturation', function(){
 				}
 			}).change(function(){
 				scope.$apply(function() {
-					$('#q-hex').val(scope.color.setSaturation($el.val()).toCSS().substr(1));
-					scope.$broadcast('search', true);
+					var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
+					$location.path("colors/" + hex);
+					// $('#q-hex').val(hex);
+					// scope.$broadcast('search', true);
 					// scope.$broadcast('saturation', $el.val());
 				});
 			});
-			scope.$watch('color', function(newVal) {
-				var val = (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1;
-				$el.val(val);
-			});
+			// scope.$watch('color', function(newVal) {
+			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1;
+			// 	$el.val(val);
+			// });
 		}
 	}
 })
@@ -297,7 +310,7 @@ App.directive('qsaturation', function(){
 // 	}
 // })
 
-App.directive('qlightness', function(){
+App.directive('qlightness', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
@@ -312,15 +325,17 @@ App.directive('qlightness', function(){
 				}
 			}).change(function(){
 				scope.$apply(function() {
-					$('#q-hex').val(scope.color.setLightness($el.val()).toCSS().substr(1));
-					scope.$broadcast('search', true);
+					var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
+					$location.path("colors/" + hex);
+					// $('#q-hex').val(hex);
+					// scope.$broadcast('search', true);
 					// scope.$broadcast('lightness', $el.val());
 				});
 			});
-			scope.$watch('color', function(newVal) {
-				var val = (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1;
-				$el.val(val);
-			});
+			// scope.$watch('color', function(newVal) {
+			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1;
+			// 	$el.val(val);
+			// });
 		}
 	}
 })

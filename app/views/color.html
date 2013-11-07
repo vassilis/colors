@@ -28,7 +28,7 @@
 -->
 
 <div class="top">
-	<button droplet><i class="icon-droplet"></i></button>
+	<button droplet><i class="icon-droplet" style="color:{{color.toCSS()}}"></i></button>
 </div>
 
 <div id="color-picker-wrap" class="color-picker-wrap">
@@ -40,20 +40,20 @@
 </div>
 
 <header style="background-color:{{color.toCSS()}}">
-	<div class="values" ng-show="results.length">
-		<div>Hue: {{color.getHue()}}</div>
-		<div>Saturation: {{color.getSaturation()}}</div>
+	<!-- <div class="values" ng-show="results.length"> -->
+		<!-- <div>Hue: {{color.getHue()}}</div> -->
+		<!-- <div>Saturation: {{color.getSaturation()}}</div> -->
 		<!-- <div>Value: {{color.getValue()}}</div> -->
-		<div>Lightness: {{color.getLightness()}}</div>
+		<!-- <div>Lightness: {{color.getLightness()}}</div> -->
 		<!-- <div>Alpha: {{color.getAlpha()}}</div> -->
-		<br><br><div>Luminance: {{color.getLuminance()}}</div>
-	</div>
+		<!-- <br><br><div>Luminance: {{color.getLuminance()}}</div> -->
+	<!-- </div> -->
 	<div class="sliders" ng-show="results.length">
-		<div data-val="{{color.getHue()}}" qhue style="background-color:{{color.toCSS()}}"></div>
-		<div data-val="{{color.getSaturation()}}" qsaturation style="background-color:{{color.toCSS()}}"></div>
-		<!-- <div data-val="{{color.getValue()}}" qvalue></div> -->
-		<div data-val="{{color.getLightness()}}" qlightness style="background-color:{{color.toCSS()}}"></div>
-		<!-- <div data-val="{{color.getAlpha()}}" qalpha></div> -->
+		<div qhue></div>
+		<div qsaturation></div>
+		<!-- <div qvalue></div> -->
+		<div qlightness></div>
+		<!-- <div qalpha></div> -->
 	</div>
 	<span><i class="icon-heart2"></i></span>
 </header>

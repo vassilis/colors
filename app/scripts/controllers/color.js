@@ -1,13 +1,13 @@
 'use strict';
 
-App.Controllers.ColorCtrl = function ($scope, $http) {
+App.Controllers.ColorCtrl = function ($scope, $http, $routeParams) {
 
 	var Color = net.brehaut.Color;
 
-	$scope.reset = function(){
-		$scope.results = [];
-		$scope.color = Color('#000000');
-	}
+	// $scope.reset = function(){
+	// 	$scope.results = [];
+	// 	$scope.color = Color('#000000');
+	// }
 
 	$scope.search = function(){
 
@@ -24,7 +24,9 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 			var color = Color(hex);
 			$scope.color = color;
 
-			$('header').removeClass('lightness').css('background-color', hex);
+			$('.icon-droplet').css('color', hex);
+			$('header').css('background-color', hex);
+			$('header').removeClass('lightness');
 			if (color.getLightness() > 0.5) {
 				$('header').addClass('lightness');
 			}
@@ -57,6 +59,11 @@ App.Controllers.ColorCtrl = function ($scope, $http) {
 	$scope.$on('search', function(evt) {
 		$scope.search();
 	});
+
+	if (typeof $routeParams.hex != 'undefined') {
+		$('#q-hex').val($routeParams.hex);
+		$scope.search();
+	}
 
 	// $scope.$on('saturation', function(evt, newvalue) {
 	// 	$scope.color = $scope.color.setSaturation(newvalue);
