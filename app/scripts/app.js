@@ -64,18 +64,18 @@ App.directive('qclip', function(){
 	}
 })
 
-App.directive('qcolor', function(){
-	return {
-		link: function(scope, el, attrs) {
-			var $el = $(el);
-			$el.on('click', function(event){
-				$el.parent().toggleClass('active');
-				$el.toggleClass('active');
-				$el.siblings().removeClass('active');
-			})
-		}
-	}
-})
+// App.directive('qcolor', function(){
+// 	return {
+// 		link: function(scope, el, attrs) {
+// 			var $el = $(el);
+// 			$el.on('click', function(event){
+// 				$el.parent().toggleClass('active');
+// 				$el.toggleClass('active');
+// 				$el.siblings().removeClass('active');
+// 			})
+// 		}
+// 	}
+// })
 
 App.directive('qpalette', function(){
 	return {
@@ -83,6 +83,13 @@ App.directive('qpalette', function(){
 			var $el = $(el);
 			$el.on('click', function(event){
 				$el.toggleClass('active');
+				$el.removeClass('fade');
+				$el.siblings().removeClass('active');
+				if ($el.hasClass('active')) {
+					$el.siblings().addClass('fade');
+				} else {
+					$el.siblings().removeClass('fade');
+				}
 			})
 		}
 	}
