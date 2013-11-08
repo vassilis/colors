@@ -127,7 +127,6 @@ App.directive('colorpicker', ['$location', function($location){
 				var w = $el.parent().width();
 				$el.attr('width', w);
 				$el.attr('height', h);
-				$el.parent().css('height', h).attr('data-height', h);
 				canvas.drawImage(img,0,0,w,h);
 			})
 
