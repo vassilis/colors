@@ -4,10 +4,10 @@ window.App = angular.module('colourloversClientApp', [])
 
 App.config(function ($routeProvider) {
 	$routeProvider
-		.when('/', {
-			templateUrl: 'views/color.html',
-			controller: 'App.Controllers.ColorCtrl'
-		})
+		// .when('/', {
+		// 	templateUrl: 'views/color.html',
+		// 	controller: 'App.Controllers.ColorCtrl'
+		// })
 		.when('/:hex', {
 			templateUrl: 'views/color.html',
 			controller: 'App.Controllers.ColorCtrl'
@@ -37,7 +37,7 @@ App.config(function ($routeProvider) {
 		// 	controller: 'App.Controllers.PalettesCtrl'
 		// })
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/EB4C4C'
 		});
 });
 
