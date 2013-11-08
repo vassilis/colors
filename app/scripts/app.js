@@ -8,34 +8,34 @@ App.config(function ($routeProvider) {
 			templateUrl: 'views/color.html',
 			controller: 'App.Controllers.ColorCtrl'
 		})
-		.when('/colors/:hex', {
+		.when('/:hex', {
 			templateUrl: 'views/color.html',
 			controller: 'App.Controllers.ColorCtrl'
 		})
-		.when('/lovers', {
-			templateUrl: 'views/main.html',
-			controller: 'App.Controllers.MainCtrl'
-		})
-		.when('/search', {
-			templateUrl: 'views/search.html',
-			controller: 'App.Controllers.SearchCtrl'
-		})
-		.when('/palettes/top', {
-			templateUrl: 'views/palettes.html',
-			controller: 'App.Controllers.PalettesTopCtrl'
-		})
-		.when('/palettes/new', {
-			templateUrl: 'views/palettes.html',
-			controller: 'App.Controllers.PalettesNewCtrl'
-		})
-		.when('/palettes/:palette_id', {
-			templateUrl: 'views/palette.html',
-			controller: 'App.Controllers.PaletteCtrl'
-		})
-		.when('/palettes', {
-			templateUrl: 'views/palettes.html',
-			controller: 'App.Controllers.PalettesCtrl'
-		})
+		// .when('/lovers', {
+		// 	templateUrl: 'views/main.html',
+		// 	controller: 'App.Controllers.MainCtrl'
+		// })
+		// .when('/search', {
+		// 	templateUrl: 'views/search.html',
+		// 	controller: 'App.Controllers.SearchCtrl'
+		// })
+		// .when('/palettes/top', {
+		// 	templateUrl: 'views/palettes.html',
+		// 	controller: 'App.Controllers.PalettesTopCtrl'
+		// })
+		// .when('/palettes/new', {
+		// 	templateUrl: 'views/palettes.html',
+		// 	controller: 'App.Controllers.PalettesNewCtrl'
+		// })
+		// .when('/palettes/:palette_id', {
+		// 	templateUrl: 'views/palette.html',
+		// 	controller: 'App.Controllers.PaletteCtrl'
+		// })
+		// .when('/palettes', {
+		// 	templateUrl: 'views/palettes.html',
+		// 	controller: 'App.Controllers.PalettesCtrl'
+		// })
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -158,7 +158,7 @@ App.directive('colorpicker', ['$location', function($location){
 				scope.$apply(function() {
 					close_picker();
 					$('#q-hex').val(hex);
-					$location.path("colors/" + hex);
+					$location.path("/" + hex);
 					// scope.$broadcast('search', true);
 				})
 			})
@@ -200,7 +200,7 @@ App.directive('qhex', ['$location', function($location){
 					scope.$apply(function() {
 						var hex = $.trim($el.val())
 						if (hex.charAt(0) == "#") hex = hex.substr(1);
-						if (hex.length == 6) $location.path("colors/" + hex);
+						if (hex.length == 6) $location.path("/" + hex);
 					});
 				}
 			})
@@ -260,7 +260,7 @@ App.directive('qhue', ['$location', function($location){
 			}).change(function(){
 				close_picker();
 				var hex = scope.color.setHue($el.val()).toCSS().substr(1);
-				$location.path("colors/" + hex);
+				$location.path("/" + hex);
 				// $('#q-hex').val(hex);
 				// scope.$broadcast('search', true);
 				// scope.$broadcast('saturation', $el.val());
@@ -290,7 +290,7 @@ App.directive('qsaturation', ['$location', function($location){
 			}).change(function(){
 				close_picker();
 				var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
-				$location.path("colors/" + hex);
+				$location.path("/" + hex);
 				// $('#q-hex').val(hex);
 				// scope.$broadcast('search', true);
 				// scope.$broadcast('saturation', $el.val());
@@ -343,7 +343,7 @@ App.directive('qlightness', ['$location', function($location){
 			}).change(function(){
 				close_picker();
 				var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
-				$location.path("colors/" + hex);
+				$location.path("/" + hex);
 				// $('#q-hex').val(hex);
 				// scope.$broadcast('search', true);
 				// scope.$broadcast('lightness', $el.val());
