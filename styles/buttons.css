@@ -1,0 +1,71 @@
+
+
+.buttons {
+	position: absolute;
+	bottom: 80px;
+	right: 30px;
+	z-index: 10;
+	text-align: center;
+}
+
+.btn-icon {
+	border: 0;
+	padding: 5px 22px;
+	margin: 0;
+	line-height: 1;
+	outline: 0;
+	background: none;
+	color: #AAA;
+	background-color: #222;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.btn-icon:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.btn-icon:active {
+	color: #000;
+}
+
+.btn-icon[disabled] {
+	color: #444;
+}
+
+.light .btn-icon {
+	background-color: #EEE;
+	color: #999;
+}
+.light .btn-icon:hover {
+	color: #666;
+}
+.light .btn-icon:active {
+	color: #CCC;
+}
+.light .btn-icon[disabled] {
+	color: #CCC;
+}
+
+.btn-icon i {
+	font-size: 40px;
+	line-height: 1;
+}
+
+.tools {
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	z-index: 10;
+	text-align: center;
+}
+
+.tools .btn-icon {
+	padding: 10px;
+}
+
+.tools i {
+	font-size: 20px;
+}
