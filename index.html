@@ -18,7 +18,11 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Share+Tech">
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
 
-	<link rel="stylesheet" href="styles/e33f926c.main.css">
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/scrollbar.css">
+	<link rel="stylesheet" href="styles/jquery.nouislider.css">
+	<!-- endbuild -->
 </head>
 	<body ng-app="colourloversClientApp">
 		<!--[if lt IE 7]>
@@ -32,12 +36,12 @@
 
 		<!-- Add your site or application content here -->
 		<div class="container">
-			<div class="top" droplet="">
+			<div class="top" droplet>
 				<button id="btn-drop"><i class="icon-droplet" style="color:{{color.toCSS()}}"></i></button>
 			</div>
 
 			<div id="color-picker-wrap" class="color-picker-wrap">
-				<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker=""></canvas>
+				<canvas id="canvas_picker" class="color-picker" colorpicker></canvas>
 			</div>
 		</div>
 		<div class="container" ng-view=""></div>
@@ -57,7 +61,8 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 
-		<script src="scripts/d41d8cd9.scripts.js"></script>
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<!-- endbuild -->
 		<script src="scripts/vendors/ZeroClipboard.min.js"></script>
 		<script src="scripts/vendors/color.js"></script>
 		<script src="scripts/vendors/animatescroll.js"></script>
