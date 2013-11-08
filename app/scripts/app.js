@@ -53,7 +53,7 @@ App.Controllers = {}
 App.Data = {}
 
 ZeroClipboard.setDefaults({
-	moviePath: '/ZeroClipboard.swf'
+	moviePath: 'ZeroClipboard.swf'
 });
 
 App.directive('qclip', function(){
