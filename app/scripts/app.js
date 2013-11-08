@@ -111,7 +111,7 @@ App.directive('colorpicker', ['$location', function($location){
 
 			// create an image object and get it’s source
 			var img = new Image();
-			img.src = '/images/hsv.png';
+			img.src = 'images/hsv.png';
 
 			// copy the image to the canvas
 			$(img).load(function(){
