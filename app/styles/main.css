@@ -339,7 +339,6 @@ footer a {
 	height: 0;
 	overflow: hidden;
 	transition: height .3s;
-	/*margin-bottom: 1px;*/
 }
 
 .values {

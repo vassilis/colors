@@ -113,10 +113,23 @@ App.directive('colorpicker', ['$location', function($location){
 			var img = new Image();
 			img.src = 'images/hsv.png';
 
+			var w = $el.parent().width();
+			var h = 400;
+			$el.attr('width', w);
+			$el.attr('height', h);
+
 			// copy the image to the canvas
 			$(img).load(function(){
-				canvas.drawImage(img,0,0,1140,400);
+				canvas.drawImage(img,0,0,w,h);
 			});
+
+			$(window).resize(function(){
+				var w = $el.parent().width();
+				$el.attr('width', w);
+				$el.attr('height', h);
+				$el.parent().css('height', h).attr('data-height', h);
+				canvas.drawImage(img,0,0,w,h);
+			})
 
 			var hex = '';
 			var colors = [];
@@ -156,7 +169,7 @@ App.directive('colorpicker', ['$location', function($location){
 				// 	$preview.eq(i).data('color',colors[i]).css('background-color', '#' + colors[i]);
 				// }
 				scope.$apply(function() {
-					close_picker();
+					closePicker();
 					$('#q-hex').val(hex);
 					$location.path("/" + hex);
 					// scope.$broadcast('search', true);
@@ -258,7 +271,7 @@ App.directive('qhue', ['$location', function($location){
 					})
 				}
 			}).change(function(){
-				close_picker();
+				closePicker();
 				var hex = scope.color.setHue($el.val()).toCSS().substr(1);
 				$location.path("/" + hex);
 				// $('#q-hex').val(hex);
@@ -288,7 +301,7 @@ App.directive('qsaturation', ['$location', function($location){
 					})
 				}
 			}).change(function(){
-				close_picker();
+				closePicker();
 				var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
 				$location.path("/" + hex);
 				// $('#q-hex').val(hex);
@@ -341,7 +354,7 @@ App.directive('qlightness', ['$location', function($location){
 					})
 				}
 			}).change(function(){
-				close_picker();
+				closePicker();
 				var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
 				$location.path("/" + hex);
 				// $('#q-hex').val(hex);
@@ -380,8 +393,16 @@ App.directive('qlightness', ['$location', function($location){
 // 	}
 // })
 
-window.close_picker = function() {
+window.closePicker = function() {
 	var $picker = $('#color-picker-wrap');
 	$picker.css('height','0');
 	$picker.data('open',false);
+}
+
+$.fn.resizeToParent = function(w,h){
+	var $el = $(this);
+	var w = $el.parent().width();
+	var canvas = el[0].getContext('2d');
+	$el.attr('width', w);
+	$el.attr('height', h);
 }
