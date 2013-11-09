@@ -339,7 +339,6 @@ footer a {
 	height: 0;
 	overflow: hidden;
 	transition: height .3s;
-	/*margin-bottom: 1px;*/
 }
 
 .values {
@@ -389,4 +388,12 @@ footer a {
 	background: #000;
 	padding-top: 20px;
 	/*border-top: 1px solid #444;*/
+}
+
+.ui-slider {
+	background-color: #FFF;
+}
+
+.ui-slider-handle {
+	background-color: #FFF;
 }

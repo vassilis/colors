@@ -4,40 +4,40 @@ window.App = angular.module('colourloversClientApp', [])
 
 App.config(function ($routeProvider) {
 	$routeProvider
-		.when('/', {
+		// .when('/', {
+		// 	templateUrl: 'views/color.html',
+		// 	controller: 'App.Controllers.ColorCtrl'
+		// })
+		.when('/:hex', {
 			templateUrl: 'views/color.html',
 			controller: 'App.Controllers.ColorCtrl'
 		})
-		.when('/colors/:hex', {
-			templateUrl: 'views/color.html',
-			controller: 'App.Controllers.ColorCtrl'
-		})
-		.when('/lovers', {
-			templateUrl: 'views/main.html',
-			controller: 'App.Controllers.MainCtrl'
-		})
-		.when('/search', {
-			templateUrl: 'views/search.html',
-			controller: 'App.Controllers.SearchCtrl'
-		})
-		.when('/palettes/top', {
-			templateUrl: 'views/palettes.html',
-			controller: 'App.Controllers.PalettesTopCtrl'
-		})
-		.when('/palettes/new', {
-			templateUrl: 'views/palettes.html',
-			controller: 'App.Controllers.PalettesNewCtrl'
-		})
-		.when('/palettes/:palette_id', {
-			templateUrl: 'views/palette.html',
-			controller: 'App.Controllers.PaletteCtrl'
-		})
-		.when('/palettes', {
-			templateUrl: 'views/palettes.html',
-			controller: 'App.Controllers.PalettesCtrl'
-		})
+		// .when('/lovers', {
+		// 	templateUrl: 'views/main.html',
+		// 	controller: 'App.Controllers.MainCtrl'
+		// })
+		// .when('/search', {
+		// 	templateUrl: 'views/search.html',
+		// 	controller: 'App.Controllers.SearchCtrl'
+		// })
+		// .when('/palettes/top', {
+		// 	templateUrl: 'views/palettes.html',
+		// 	controller: 'App.Controllers.PalettesTopCtrl'
+		// })
+		// .when('/palettes/new', {
+		// 	templateUrl: 'views/palettes.html',
+		// 	controller: 'App.Controllers.PalettesNewCtrl'
+		// })
+		// .when('/palettes/:palette_id', {
+		// 	templateUrl: 'views/palette.html',
+		// 	controller: 'App.Controllers.PaletteCtrl'
+		// })
+		// .when('/palettes', {
+		// 	templateUrl: 'views/palettes.html',
+		// 	controller: 'App.Controllers.PalettesCtrl'
+		// })
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/EB4C4C'
 		});
 });
 
@@ -53,7 +53,7 @@ App.Controllers = {}
 App.Data = {}
 
 ZeroClipboard.setDefaults({
-	moviePath: '/ZeroClipboard.swf'
+	moviePath: 'ZeroClipboard.swf'
 });
 
 App.directive('qclip', function(){
@@ -111,12 +111,24 @@ App.directive('colorpicker', ['$location', function($location){
 
 			// create an image object and get it’s source
 			var img = new Image();
-			img.src = '/images/hsv.png';
+			img.src = 'images/hsv.png';
+
+			var w = $el.parent().width();
+			var h = 400;
+			$el.attr('width', w);
+			$el.attr('height', h);
 
 			// copy the image to the canvas
 			$(img).load(function(){
-				canvas.drawImage(img,0,0,1140,400);
+				canvas.drawImage(img,0,0,w,h);
 			});
+
+			$(window).resize(function(){
+				var w = $el.parent().width();
+				$el.attr('width', w);
+				$el.attr('height', h);
+				canvas.drawImage(img,0,0,w,h);
+			})
 
 			var hex = '';
 			var colors = [];
@@ -156,9 +168,9 @@ App.directive('colorpicker', ['$location', function($location){
 				// 	$preview.eq(i).data('color',colors[i]).css('background-color', '#' + colors[i]);
 				// }
 				scope.$apply(function() {
-					close_picker();
+					closePicker();
 					$('#q-hex').val(hex);
-					$location.path("colors/" + hex);
+					$location.path("/" + hex);
 					// scope.$broadcast('search', true);
 				})
 			})
@@ -200,7 +212,7 @@ App.directive('qhex', ['$location', function($location){
 					scope.$apply(function() {
 						var hex = $.trim($el.val())
 						if (hex.charAt(0) == "#") hex = hex.substr(1);
-						if (hex.length == 6) $location.path("colors/" + hex);
+						if (hex.length == 6) $location.path("/" + hex);
 					});
 				}
 			})
@@ -248,28 +260,22 @@ App.directive('qhue', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.noUiSlider({
-				range: [0, 360],
-				start: (typeof scope.color != 'undefined') ? scope.color.getHue() : 360,
-				handles: 1,
+			$el.slider({
+				min: 0,
+				max: 360,
+				step: 1,
+				value: (typeof scope.color != 'undefined') ? scope.color.getHue() : 1,
 				slide: function(){
-					scope.$apply(function() {
-						scope.color = scope.color.setHue($el.val());
-					})
+					scope.color = scope.color.setHue($el.slider("value"));
+					scope.$apply();
+				},
+				change: function() {
+					closePicker();
+					var hex = scope.color.setHue($el.slider("value")).toCSS().substr(1);
+					$location.path("/" + hex);
+					setTimeout(function(){scope.$apply();}, 10);
 				}
-			}).change(function(){
-				close_picker();
-				var hex = scope.color.setHue($el.val()).toCSS().substr(1);
-				$location.path("colors/" + hex);
-				// $('#q-hex').val(hex);
-				// scope.$broadcast('search', true);
-				// scope.$broadcast('saturation', $el.val());
-				setTimeout(function(){scope.$apply();}, 10);
 			});
-			// scope.$watch('color', function(newVal) {
-			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getHue() : 1;
-			// 	$el.val(val);
-			// });
 		}
 	}
 }])
@@ -278,28 +284,22 @@ App.directive('qsaturation', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.noUiSlider({
-				range: [0, 1],
-				start: (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1,
-				handles: 1,
+			$el.slider({
+				min: 0,
+				max: 1,
+				step: 0.01,
+				value: (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1,
 				slide: function(){
-					scope.$apply(function() {
-						scope.color = scope.color.setSaturation($el.val());
-					})
+					scope.color = scope.color.setSaturation($el.slider("value"));
+					scope.$apply();
+				},
+				change: function() {
+					closePicker();
+					var hex = scope.color.setSaturation($el.slider("value")).toCSS().substr(1);
+					$location.path("/" + hex);
+					setTimeout(function(){scope.$apply();}, 10);
 				}
-			}).change(function(){
-				close_picker();
-				var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
-				$location.path("colors/" + hex);
-				// $('#q-hex').val(hex);
-				// scope.$broadcast('search', true);
-				// scope.$broadcast('saturation', $el.val());
-				setTimeout(function(){scope.$apply();}, 10);
 			});
-			// scope.$watch('color', function(newVal) {
-			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1;
-			// 	$el.val(val);
-			// });
 		}
 	}
 }])
@@ -331,28 +331,22 @@ App.directive('qlightness', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.noUiSlider({
-				range: [0, 1],
-				start: (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1,
-				handles: 1,
+			$el.slider({
+				min: 0,
+				max: 1,
+				step: 0.01,
+				value: (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1,
 				slide: function(){
-					scope.$apply(function() {
-						scope.color = scope.color.setLightness($el.val());
-					})
+					scope.color = scope.color.setLightness($el.slider("value"));
+					scope.$apply();
+				},
+				change: function() {
+					closePicker();
+					var hex = scope.color.setLightness($el.slider("value")).toCSS().substr(1);
+					$location.path("/" + hex);
+					setTimeout(function(){scope.$apply();}, 10);
 				}
-			}).change(function(){
-				close_picker();
-				var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
-				$location.path("colors/" + hex);
-				// $('#q-hex').val(hex);
-				// scope.$broadcast('search', true);
-				// scope.$broadcast('lightness', $el.val());
-				setTimeout(function(){scope.$apply();}, 10);
 			});
-			// scope.$watch('color', function(newVal) {
-			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1;
-			// 	$el.val(val);
-			// });
 		}
 	}
 }])
@@ -380,8 +374,16 @@ App.directive('qlightness', ['$location', function($location){
 // 	}
 // })
 
-window.close_picker = function() {
+window.closePicker = function() {
 	var $picker = $('#color-picker-wrap');
 	$picker.css('height','0');
 	$picker.data('open',false);
+}
+
+$.fn.resizeToParent = function(w,h){
+	var $el = $(this);
+	var w = $el.parent().width();
+	var canvas = el[0].getContext('2d');
+	$el.attr('width', w);
+	$el.attr('height', h);
 }

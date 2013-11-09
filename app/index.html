@@ -16,13 +16,14 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Mystery+Quest">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Share+Tech">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
 
 	<!-- build:css(.tmp) styles/main.css -->
+	<!-- endbuild -->
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/scrollbar.css">
 	<link rel="stylesheet" href="styles/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<!-- endbuild -->
 </head>
 	<body ng-app="colourloversClientApp">
 		<!--[if lt IE 7]>
@@ -41,7 +42,7 @@
 			</div>
 
 			<div id="color-picker-wrap" class="color-picker-wrap">
-				<canvas width="1140" height="400" id="canvas_picker" class="color-picker" colorpicker></canvas>
+				<canvas id="canvas_picker" class="color-picker" colorpicker></canvas>
 			</div>
 		</div>
 		<div class="container" ng-view=""></div>
@@ -62,15 +63,11 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 
 		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<!-- endbuild -->
 		<script src="scripts/vendors/ZeroClipboard.min.js"></script>
 		<script src="scripts/vendors/color.js"></script>
 		<script src="scripts/vendors/jquery-ui-1.10.3.custom.min.js"></script>
-		<script src="scripts/vendors/jquery.nouislider.min.js"></script>
 		<script src="scripts/app.js"></script>
-		<script src="scripts/controllers/main.js"></script>
-		<script src="scripts/controllers/palettes.js"></script>
-		<script src="scripts/controllers/search.js"></script>
 		<script src="scripts/controllers/color.js"></script>
-		<!-- endbuild -->
 	</body>
 </html>
