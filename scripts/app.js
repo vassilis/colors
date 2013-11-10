@@ -260,28 +260,22 @@ App.directive('qhue', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.noUiSlider({
-				range: [0, 360],
-				start: (typeof scope.color != 'undefined') ? scope.color.getHue() : 360,
-				handles: 1,
+			$el.slider({
+				min: 0,
+				max: 360,
+				step: 1,
+				value: (typeof scope.color != 'undefined') ? scope.color.getHue() : 1,
 				slide: function(){
-					scope.$apply(function() {
-						scope.color = scope.color.setHue($el.val());
-					})
+					scope.color = scope.color.setHue($el.slider("value"));
+					scope.$apply();
+				},
+				change: function() {
+					closePicker();
+					var hex = scope.color.setHue($el.slider("value")).toCSS().substr(1);
+					$location.path("/" + hex);
+					setTimeout(function(){scope.$apply();}, 10);
 				}
-			}).change(function(){
-				closePicker();
-				var hex = scope.color.setHue($el.val()).toCSS().substr(1);
-				$location.path("/" + hex);
-				// $('#q-hex').val(hex);
-				// scope.$broadcast('search', true);
-				// scope.$broadcast('saturation', $el.val());
-				setTimeout(function(){scope.$apply();}, 10);
 			});
-			// scope.$watch('color', function(newVal) {
-			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getHue() : 1;
-			// 	$el.val(val);
-			// });
 		}
 	}
 }])
@@ -290,28 +284,22 @@ App.directive('qsaturation', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.noUiSlider({
-				range: [0, 1],
-				start: (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1,
-				handles: 1,
+			$el.slider({
+				min: 0,
+				max: 1,
+				step: 0.01,
+				value: (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1,
 				slide: function(){
-					scope.$apply(function() {
-						scope.color = scope.color.setSaturation($el.val());
-					})
+					scope.color = scope.color.setSaturation($el.slider("value"));
+					scope.$apply();
+				},
+				change: function() {
+					closePicker();
+					var hex = scope.color.setSaturation($el.slider("value")).toCSS().substr(1);
+					$location.path("/" + hex);
+					setTimeout(function(){scope.$apply();}, 10);
 				}
-			}).change(function(){
-				closePicker();
-				var hex = scope.color.setSaturation($el.val()).toCSS().substr(1);
-				$location.path("/" + hex);
-				// $('#q-hex').val(hex);
-				// scope.$broadcast('search', true);
-				// scope.$broadcast('saturation', $el.val());
-				setTimeout(function(){scope.$apply();}, 10);
 			});
-			// scope.$watch('color', function(newVal) {
-			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getSaturation() : 1;
-			// 	$el.val(val);
-			// });
 		}
 	}
 }])
@@ -343,28 +331,22 @@ App.directive('qlightness', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
 			var $el = $(el);
-			$el.noUiSlider({
-				range: [0, 1],
-				start: (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1,
-				handles: 1,
+			$el.slider({
+				min: 0,
+				max: 1,
+				step: 0.01,
+				value: (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1,
 				slide: function(){
-					scope.$apply(function() {
-						scope.color = scope.color.setLightness($el.val());
-					})
+					scope.color = scope.color.setLightness($el.slider("value"));
+					scope.$apply();
+				},
+				change: function() {
+					closePicker();
+					var hex = scope.color.setLightness($el.slider("value")).toCSS().substr(1);
+					$location.path("/" + hex);
+					setTimeout(function(){scope.$apply();}, 10);
 				}
-			}).change(function(){
-				closePicker();
-				var hex = scope.color.setLightness($el.val()).toCSS().substr(1);
-				$location.path("/" + hex);
-				// $('#q-hex').val(hex);
-				// scope.$broadcast('search', true);
-				// scope.$broadcast('lightness', $el.val());
-				setTimeout(function(){scope.$apply();}, 10);
 			});
-			// scope.$watch('color', function(newVal) {
-			// 	var val = (typeof scope.color != 'undefined') ? scope.color.getLightness() : 1;
-			// 	$el.val(val);
-			// });
 		}
 	}
 }])
