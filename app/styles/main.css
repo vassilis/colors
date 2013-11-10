@@ -390,10 +390,16 @@ footer a {
 	/*border-top: 1px solid #444;*/
 }
 
-.ui-slider {
+div.ui-slider-horizontal {
+	height: 3px;
 	background-color: #FFF;
 }
 
 .ui-slider-handle {
 	background-color: #FFF;
+	border-radius: 50%;
+	top: -11px !important;
+	width: 30px !important;
+	height: 24px !important;
+	outline: 0 !important;
 }
