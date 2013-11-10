@@ -402,4 +402,5 @@ div.ui-slider-horizontal {
 	width: 30px !important;
 	height: 24px !important;
 	outline: 0 !important;
+	margin-left: -15px !important;
 }
