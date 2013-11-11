@@ -367,6 +367,12 @@ footer a {
 	left: 0;
 	padding: 42px 20px 10px;
 	height: 220px;
+	/*opacity: 0;*/
+	/*transition: opacity .3s;*/
+}
+
+.sliders.active {
+	/*opacity: 1;*/
 }
 
 .sliders div {

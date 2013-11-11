@@ -98,6 +98,23 @@ App.directive('qpalette', function(){
 	}
 })
 
+// App.directive('activeheader', function(){
+// 	return {
+// 		link: function(scope, el, attrs) {
+
+// 			var $el = $(el);
+// 			var $sliders = $('.sliders', $el);
+
+// 			$el.on('mouseenter', function(){
+// 				$sliders.addClass('active');
+// 			})
+// 			$el.on('mouseleave', function(){
+// 				$sliders.removeClass('active');
+// 			})
+// 		}
+// 	}
+// })
+
 App.directive('colorpicker', ['$location', function($location){
 	return {
 		link: function(scope, el, attrs) {
