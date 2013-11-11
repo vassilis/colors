@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "Colors",
+	"description": "Color palettes generator. Play with colors and get inspired.",
+	"version": "1",
+	"app": {
+		"urls": [
+			"*://hackwithin.com/colors/"
+		],
+		"launch": {
+			"web_url": "http://hackwithin.com/colors/"
+		}
+	},
+	"icons": {
+		"128": "icon_128.png"
+	},
+	"permissions": [
+	]
+}
